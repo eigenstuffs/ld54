@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 const SPEED = 5.0
 
 var vel: Vector3 = Vector3()
@@ -23,8 +23,8 @@ func _ready():
 	
 func _physics_process(delta):
 	# Add the gravity.
-#	if not is_on_floor():
-#		velocity.y -= gravity * delta
+	if not is_on_floor():
+		velocity.y -= gravity * delta
 	if vel:
 		velocity.x = vel.x
 		velocity.z = vel.y
