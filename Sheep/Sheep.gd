@@ -55,9 +55,10 @@ func switch_state(new_state : int):
 func _process(delta):
 	match state:
 		states.ALERTED:
-			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * run_speed
+			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed)
 			if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 10:
 				switch_state(states.UNALERTED)
+				print("unaltered")
 		states.UNALERTED:
 			if unalerted_walk:
 				vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle)
