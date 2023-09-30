@@ -13,9 +13,6 @@ script = ExtResource("1_4wscr")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_3l1xe")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.937774, 0.347247, 0, -0.347247, 0.937774, 0, 1.07428, 2.99468)
-
 [node name="Bark" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bark"]

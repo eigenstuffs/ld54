@@ -8,8 +8,8 @@ var dog : CharacterBody3D
 func _ready():
 	dog = get_node(target)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var pos : Vector3 = dog.global_position
-	self.global_position.lerp(pos, 0.2 * delta)
+	print(pos)
+	global_position = self.global_position.lerp(pos, 0.2)

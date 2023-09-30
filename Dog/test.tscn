@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj88iu8qml7iw"]
+[gd_scene load_steps=4 format=3 uid="uid://dj88iu8qml7iw"]
 
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="1_ki4y8"]
+[ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera.tscn" id="2_qhlx5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1c1tg"]
 
@@ -11,3 +12,6 @@ mesh = SubResource("PlaneMesh_1c1tg")
 
 [node name="Dog" parent="." instance=ExtResource("1_ki4y8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689043, 0)
+
+[node name="Camera" parent="." instance=ExtResource("2_qhlx5")]
+target = NodePath("../Dog")

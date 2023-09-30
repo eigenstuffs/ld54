@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlashtvgn52cr"]
+
+[ext_resource type="Script" path="res://Camera/CameraRef.gd" id="1_uww7f"]
+
+[node name="Camera" type="Node3D"]
+script = ExtResource("1_uww7f")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 3, 3)
+fov = 100.4
