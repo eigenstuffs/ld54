@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcgso4vo7nkjw"]
+
+[ext_resource type="Script" path="res://UIScenes/Credits/credits_scene.gd" id="1_srw87"]
+
+[node name="CreditsScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_srw87")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.909804, 0.8, 0.713726, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.172
+anchor_top = 0.237
+anchor_right = 0.828
+anchor_bottom = 0.763
+offset_left = -0.272058
+offset_top = -0.288018
+offset_right = 0.271973
+offset_bottom = 0.287998
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.909804, 0.588235, 0.423529, 1)
+
+[node name="TextEdit2" type="RichTextLabel" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 316.0
+offset_top = 15.0
+offset_right = -315.256
+offset_bottom = -273.424
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+
+[node name="TextEdit" type="RichTextLabel" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 276.0
+offset_top = 78.0
+offset_right = -308.256
+offset_bottom = -68.424
+grow_horizontal = 2
+grow_vertical = 2
+text = "Branden Bohrnsen
+Greg Baldwin
+Clea Hannahs
+Bharat Raman
+Aarush Age
+Kenzie MacDougal
+Ming Zhu
+Ray Hsiao"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022
+anchor_top = 0.887
+anchor_right = 0.09
+anchor_bottom = 0.969
+offset_left = -0.344002
+offset_top = 0.223984
+offset_right = 0.319996
+offset_bottom = 0.0879731
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
