@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj88iu8qml7iw"]
+[gd_scene load_steps=6 format=3 uid="uid://dj88iu8qml7iw"]
 
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="1_ki4y8"]
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="2_qhlx5"]
 [ext_resource type="PackedScene" uid="uid://bv7dltqbb6248" path="res://InGameUI/in_game_ui.tscn" id="3_w2id4"]
+[ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="4_npehv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1c1tg"]
 
@@ -18,3 +19,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689043, 0)
 target = NodePath("../Dog")
 
 [node name="InGameUI" parent="." instance=ExtResource("3_w2id4")]
+
+[node name="Sheep" parent="." instance=ExtResource("4_npehv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.842762, 3.29188)
+player = NodePath("../Dog")

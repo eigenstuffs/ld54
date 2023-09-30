@@ -8,9 +8,6 @@
 
 [node name="Sheep" type="CharacterBody3D"]
 script = ExtResource("1_u6due")
-player = null
-run_speed = null
-walk_speed = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_2xufd")

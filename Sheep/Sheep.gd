@@ -76,3 +76,4 @@ func _on_timer_timeout():
 		states.STOMPED:
 			switch_state(states.DEAD)
 		_:
+			pass
