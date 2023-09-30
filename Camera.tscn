@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjxrdfa4uhtwp"]
+[gd_scene load_steps=3 format=3 uid="uid://cjxrdfa4uhtwp"]
 
 [ext_resource type="Script" path="res://CameraRef.gd" id="1_ls4yr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jvvvw"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_ls4yr")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 3, 3)
+transform = Transform3D(0.558527, -0.698803, 0.446903, 0, 0.538771, 0.842452, -0.829486, -0.470533, 0.300918, 1.93841, 3.844, 1.48675)
 fov = 100.4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jvvvw")
