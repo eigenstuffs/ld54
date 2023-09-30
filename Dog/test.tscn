@@ -22,7 +22,7 @@ target = NodePath("../Dog")
 [node name="InGameUI" parent="." instance=ExtResource("3_w2id4")]
 
 [node name="Sheep" parent="." instance=ExtResource("4_npehv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.842762, 3.29188)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.842762, 2.37259)
 player = NodePath("../Dog")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

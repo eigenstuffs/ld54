@@ -62,7 +62,8 @@ func _process(delta):
 			else:
 				vel = Vector3()
 		states.STOMPED:
-			vel = Vector3()
+			queue_free()
+#			vel = Vector3()
 		states.DEAD:
 			pass
 		_:
@@ -77,3 +78,11 @@ func _on_timer_timeout():
 			switch_state(states.DEAD)
 		_:
 			pass
+
+func _on_hurtbox_area_entered(area):
+	if area is Bark:
+		print("barked")
+		switch_state(states.ALERTED)
+	elif area is Hitbox:
+		print("stomped")
+		switch_state(states.STOMPED)
