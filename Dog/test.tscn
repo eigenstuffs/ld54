@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="4_npehv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1c1tg"]
+size = Vector2(10, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e6e8u"]
-size = Vector3(2, 1, 2)
+size = Vector3(10, 1, 10)
 
 [node name="test" type="Node3D"]
 
