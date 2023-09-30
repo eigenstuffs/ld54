@@ -27,7 +27,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	if vel:
 		velocity.x = vel.x
-		velocity.z = vel.y
+		velocity.z = vel.z
 	else:
 		velocity.x = move_toward(velocity.x, 0, 0.1)
 		velocity.z = move_toward(velocity.z, 0, 0.1)
@@ -55,7 +55,8 @@ func switch_state(new_state : int):
 func _process(delta):
 	match state:
 		states.ALERTED:
-			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed)
+			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed) * -1
+			print(vel)
 			if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 10:
 				switch_state(states.UNALERTED)
 				print("unaltered")
