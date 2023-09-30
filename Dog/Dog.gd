@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
+class_name Dog
+
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -28,5 +28,5 @@ func bark():
 	tween.tween_property($Bark/CollisionShape3D, "scale", Vector3(3,3,3), 0.15)
 	await tween.finished
 	tween = create_tween()
-	tween.tween_property($Bark/CollisionShape3D, "scale", Vector3(0,0,0), 0.5)
+	tween.tween_property($Bark/CollisionShape3D, "scale", Vector3(.1,.1,.1), 0.5)
 	await tween.finished

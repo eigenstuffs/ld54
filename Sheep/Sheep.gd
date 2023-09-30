@@ -43,7 +43,9 @@ func switch_state(new_state : int):
 			walk_angle = randf_range(-PI, PI)
 			$Timer.start(randf_range(0.5, 5.0))
 		states.STOMPED:
-			$Timer.start(5.0)
+			$Timer.start(0.5)
+			var a = create_tween()
+			a.tween_property($MeshInstance3D, "scale", Vector3(1,0,1), 0.5)
 		states.DEAD:
 			queue_free()
 		_:
@@ -53,16 +55,18 @@ func switch_state(new_state : int):
 func _process(delta):
 	match state:
 		states.ALERTED:
-			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * run_speed
+			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed)
 			if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 10:
 				switch_state(states.UNALERTED)
+				print("unaltered")
 		states.UNALERTED:
 			if unalerted_walk:
 				vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle)
 			else:
 				vel = Vector3()
 		states.STOMPED:
-			vel = Vector3()
+			pass
+#			vel = Vector3()
 		states.DEAD:
 			pass
 		_:
@@ -77,3 +81,11 @@ func _on_timer_timeout():
 			switch_state(states.DEAD)
 		_:
 			pass
+
+func _on_hurtbox_area_entered(area):
+	if area is Bark:
+		print("barked")
+		switch_state(states.ALERTED)
+	elif area is Hitbox:
+		print("stomped")
+		switch_state(states.STOMPED)
