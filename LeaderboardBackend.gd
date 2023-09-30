@@ -4,13 +4,15 @@ extends Node
 # entry.699247905 - Name
 # entry.1588699143 - Time
 const url_submit = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfpzWDGJxGIFPtuqUbozSh8Oc7OTzlMkWEhpELsl9GHkh28Lg/formResponse"
+const url_get = "https://opensheet.elk.sh/17-PK8DnVYqZJ16bS1SGHe-EvttL0fVuobM4VZCDypHY/Data"
 const headers = ["Content-Type: application/x-www-form-urlencoded"]
 var client = HTTPClient.new()
 var http
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	upload_stats("TEST", "69.42")
+#	upload_stats("TEST", "69.42")
+	download_stats()
 
 	
 
@@ -19,7 +21,33 @@ func http_submit(_result, _response_code, _headers, _body):
 	print("Response code: " + str(_response_code))
 	print("Body: " + _body.get_string_from_utf8())
 	http.queue_free()
-	print("connected")
+	print("Submission confirmed")
+	
+
+func http_get(_result, _response_code, _headers, _body):
+	http.queue_free()
+	if !_result:
+		var data = JSON.parse_string(_body.get_string_from_utf8())
+		print("Decoding complete")
+		print(data)
+	
+
+
+func download_stats():
+	print("Attempting download...")
+	http = HTTPRequest.new()
+	http.request_completed.connect(self.http_get)
+	add_child(http)
+	
+	var get_headers = ["Content-Type: application/x-www-form-urlencoded"]
+	
+	var err = http.request(url_get, get_headers, HTTPClient.METHOD_GET)
+#	err = client.request(HTTPClient.METHOD_POST, url_submit, post_headers, user_data)
+	if err:
+		http.queue_free()
+		print("errored")
+	else:
+		print("received")
 
 func upload_stats(username, time):
 	print("Attempting upload...")
