@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj88iu8qml7iw"]
+
+[ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="1_ki4y8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1c1tg"]
+
+[node name="test" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1c1tg")
+
+[node name="Dog" parent="." instance=ExtResource("1_ki4y8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689043, 0)
