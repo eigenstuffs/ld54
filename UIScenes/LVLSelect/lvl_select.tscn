@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://diugumuikudpq"]
+
+[ext_resource type="Script" path="res://UIScenes/LVLSelect/lvl_select.gd" id="1_vfw1f"]
+
+[node name="lvlSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vfw1f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.729412, 0.764706, 0.898039, 1)
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 45.0
+grow_vertical = 0
+size_flags_horizontal = 0
+text = "Back"
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.5
+offset_top = -108.5
+offset_right = 356.5
+offset_bottom = 108.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lvl1" type="Button" parent="VBox"]
+layout_mode = 2
+text = "1"
+
+[node name="lvl2" type="Button" parent="VBox"]
+layout_mode = 2
+text = "2"
+
+[node name="lvl3" type="Button" parent="VBox"]
+layout_mode = 2
+text = "3"
+
+[node name="lvl4" type="Button" parent="VBox"]
+layout_mode = 2
+text = "4"
+
+[node name="lvl5" type="Button" parent="VBox"]
+layout_mode = 2
+text = "5"
+
+[node name="lvl6" type="Button" parent="VBox"]
+layout_mode = 2
+text = "6"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
