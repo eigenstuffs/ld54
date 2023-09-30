@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name Camera
+
 @export var target : NodePath
 
 var dog : CharacterBody3D
@@ -11,5 +13,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var pos : Vector3 = dog.global_position
-	print(pos)
 	global_position = self.global_position.lerp(pos, 0.2)

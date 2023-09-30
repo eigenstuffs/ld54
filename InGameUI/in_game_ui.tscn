@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bv7dltqbb6248"]
+
+[node name="InGameUI" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 73.0
+offset_bottom = 45.0
+scale = Vector2(2, 2)
+text = "Hi"
