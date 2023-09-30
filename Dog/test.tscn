@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj88iu8qml7iw"]
+[gd_scene load_steps=7 format=3 uid="uid://dj88iu8qml7iw"]
 
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="1_ki4y8"]
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="2_qhlx5"]
@@ -7,10 +7,10 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1c1tg"]
 
-[node name="test" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6e8u"]
+size = Vector3(2, 1, 2)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_1c1tg")
+[node name="test" type="Node3D"]
 
 [node name="Dog" parent="." instance=ExtResource("1_ki4y8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689043, 0)
@@ -23,3 +23,13 @@ target = NodePath("../Dog")
 [node name="Sheep" parent="." instance=ExtResource("4_npehv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.842762, 3.29188)
 player = NodePath("../Dog")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_1c1tg")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499422, 0)
+shape = SubResource("BoxShape3D_e6e8u")
