@@ -43,7 +43,9 @@ func switch_state(new_state : int):
 			walk_angle = randf_range(-PI, PI)
 			$Timer.start(randf_range(0.5, 5.0))
 		states.STOMPED:
-			$Timer.start(5.0)
+			$Timer.start(0.5)
+			var a = create_tween()
+			a.tween_property($MeshInstance3D, "scale", Vector3(1,0,1), 0.5)
 		states.DEAD:
 			queue_free()
 		_:
@@ -62,7 +64,7 @@ func _process(delta):
 			else:
 				vel = Vector3()
 		states.STOMPED:
-			queue_free()
+			pass
 #			vel = Vector3()
 		states.DEAD:
 			pass
