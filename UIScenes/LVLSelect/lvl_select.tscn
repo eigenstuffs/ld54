@@ -65,8 +65,9 @@ text = "4"
 layout_mode = 2
 text = "5"
 
-[node name="lvl6" type="Button" parent="VBox"]
-layout_mode = 2
-text = "6"
-
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBox/lvl1" to="." method="_on_lvl_1_pressed"]
+[connection signal="pressed" from="VBox/lvl2" to="." method="_on_lvl_2_pressed"]
+[connection signal="pressed" from="VBox/lvl3" to="." method="_on_lvl_3_pressed"]
+[connection signal="pressed" from="VBox/lvl4" to="." method="_on_lvl_4_pressed"]
+[connection signal="pressed" from="VBox/lvl5" to="." method="_on_lvl_5_pressed"]
