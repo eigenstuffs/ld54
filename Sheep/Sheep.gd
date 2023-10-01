@@ -14,6 +14,8 @@ var state := states.UNALERTED
 @export var player : NodePath
 @export var run_speed : float = 4.0
 @export var walk_speed : float = 1.0
+@export var sheepmodel : NodePath
+var animator : AnimationTree
 var unalerted_walk : bool = true
 var walk_angle : float = 0.0
 var just_switched_walk_angle : bool = false
@@ -22,6 +24,7 @@ var player_node : Node
 # when barked at, switch_state(states.ALERTED)
 func _ready():
 	player_node = get_node(player)
+	animator = get_node("sheep/AnimationTree")
 	switch_state(states.UNALERTED)
 	
 func _physics_process(delta):
@@ -39,8 +42,12 @@ func switch_state(new_state : int):
 	$Timer.stop()
 	match new_state:
 		states.ALERTED:
+			animator["parameters/conditions/endrun"] = false
+			animator["parameters/conditions/startrun"] = true
 			pass
 		states.UNALERTED:
+			animator["parameters/conditions/endrun"] = true
+			animator["parameters/conditions/startrun"] = false
 			unalerted_walk = true
 			walk_angle = randf_range(-PI, PI)
 			$Timer.start(randf_range(3.0, 5.0))
