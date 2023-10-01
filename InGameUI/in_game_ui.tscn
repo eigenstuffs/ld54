@@ -1,9 +1,75 @@
-[gd_scene format=3 uid="uid://bv7dltqbb6248"]
+[gd_scene load_steps=2 format=3 uid="uid://bv7dltqbb6248"]
+
+[ext_resource type="Script" path="res://InGameUI/Control.gd" id="1_xhoik"]
 
 [node name="InGameUI" type="CanvasLayer"]
 
-[node name="Label" type="Label" parent="."]
-offset_right = 73.0
-offset_bottom = 45.0
-scale = Vector2(2, 2)
-text = "Hi"
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xhoik")
+
+[node name="PauseMenu" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.925
+anchor_bottom = 16.15
+offset_right = -4.57764e-05
+offset_bottom = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.694118, 0.760784, 0.921569, 0.447059)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.446
+anchor_top = 0.322
+anchor_right = 0.554
+anchor_bottom = 0.678
+offset_left = 0.477989
+offset_top = -0.0120173
+offset_right = -0.478023
+offset_bottom = 0.0119787
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PauseMenu/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Resume" type="Button" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="Retry" type="Button" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Retry"
+
+[node name="Quit" type="Button" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="Pause" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 26.925
+anchor_top = 0.5
+anchor_right = 28.5
+anchor_bottom = 1.45
+offset_left = -4.57764e-05
+offset_top = -4.0
+offset_right = -7.62939e-05
+grow_horizontal = 0
+grow_vertical = 0
+text = "Pause"
+
+[connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Control" method="_on_resume_pressed"]
+[connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/Retry" to="Control" method="_on_retry_pressed"]
+[connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/Quit" to="Control" method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/Pause" to="Control" method="_on_pause_pressed"]
