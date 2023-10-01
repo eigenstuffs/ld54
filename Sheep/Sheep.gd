@@ -72,8 +72,8 @@ func _process(delta):
 		velocity.z = lerpf(velocity.z, 0.0, delta * 0.2)
 	if velocity.length() > 0:
 		var target_position = global_position + velocity
-		$Model.rotation.y = lerp_angle($Model.rotation.y, atan2(velocity.x, velocity.z), delta * 10.0)
-		$FrontDetection.look_at(target_position, Vector3(0, 1, 0))
+		$sheep.rotation.y = lerp_angle($sheep.rotation.y, atan2(velocity.x, velocity.z), delta * 10.0)
+		#$FrontDetection.look_at(target_position, Vector3(0, 1, 0))
 	match state:
 		states.ALERTED:
 			vel = (player_node.global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed) * -1
