@@ -1,22 +1,32 @@
 extends WorldEnvironment
 
+var counter = 0
+var flaring = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	red_flare()
+#	red_flare()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		red_flare()
 	pass
 
 
 func red_flare():
-	var amt = 1
-	for i in range(50):
+	if flaring:
+		counter = 0
+		return
+	flaring = true
+	counter = 0
+	while counter < 50:
 		await get_tree().create_timer(0.02).timeout
-		amt -= 0.02
+		var amt = 1 - counter * 0.02
 		environment.fog_sky_affect = amt
 		environment.fog_density = amt * 0.01
+		counter += 1
+	flaring = false
 	pass
