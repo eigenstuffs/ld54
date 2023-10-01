@@ -57,7 +57,7 @@ func _process(delta):
 		states.ALERTED:
 			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed) * -1
 			print(vel)
-			if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 10:
+			if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 5:
 				switch_state(states.UNALERTED)
 				print("unaltered")
 		states.UNALERTED:
