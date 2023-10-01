@@ -13,7 +13,7 @@ enum states {
 var state := states.UNALERTED
 @export var player : NodePath
 @export var run_speed : float = 2.0
-@export var walk_speed : float = 1.0
+@export var walk_speed : float = 0.5
 var unalerted_walk : bool = true
 var walk_angle : float = 0.0
 
@@ -39,9 +39,9 @@ func switch_state(new_state : int):
 		states.ALERTED:
 			pass
 		states.UNALERTED:
-			unalerted_walk = true
+			unalerted_walk = false
 			walk_angle = randf_range(-PI, PI)
-			$Timer.start(randf_range(0.5, 5.0))
+			$Timer.start(randf_range(4.0, 8.0))
 		states.STOMPED:
 			$Timer.start(0.5)
 			var a = create_tween()
@@ -63,11 +63,11 @@ func _process(delta):
 		states.UNALERTED:
 			if unalerted_walk:
 				if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 2:
-					vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle)
+					vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle) * walk_speed
 				else:
 					unalerted_walk = false
 					$Timer.stop()  # Don't actually know if this is necessary
-					$Timer.start(randf_range(0.5, 2.0))
+					$Timer.start(randf_range(5.0, 8.0))
 			else:
 				vel = Vector3()
 		states.STOMPED:
@@ -82,7 +82,10 @@ func _on_timer_timeout():
 	match state:
 		states.UNALERTED:
 			unalerted_walk = !unalerted_walk
-			$Timer.start(randf_range(0.5, 5.0))
+			if unalerted_walk:
+				$Timer.start(randf_range(0.5, 2.0))
+			else:
+				$Timer.start(randf_range(5.0, 10.0))
 		states.STOMPED:
 			switch_state(states.DEAD)
 		_:
@@ -93,5 +96,6 @@ func _on_hurtbox_area_entered(area):
 		print("barked")
 		switch_state(states.ALERTED)
 	elif area is Hitbox:
-		print("stomped")
-		switch_state(states.STOMPED)
+		pass
+#		print("stomped")
+#		switch_state(states.STOMPED)

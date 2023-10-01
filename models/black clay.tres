@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cmocrvl2j8ifc"]
+
+[ext_resource type="Texture2D" uid="uid://bhu6sw14igjct" path="res://models/Fingerprints01_1K_normal.png" id="1_sbb5a"]
+[ext_resource type="Texture2D" uid="uid://bccm2h38jsxqo" path="res://models/Fingerprints01_1K.png" id="2_x6hmv"]
+
+[resource]
+albedo_color = Color(0.466667, 0.466667, 0.466667, 1)
+roughness_texture = ExtResource("2_x6hmv")
+normal_enabled = true
+normal_texture = ExtResource("1_sbb5a")

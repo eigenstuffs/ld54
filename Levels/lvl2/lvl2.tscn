@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="3_s0xn6"]
 [ext_resource type="PackedScene" uid="uid://bv7dltqbb6248" path="res://InGameUI/in_game_ui.tscn" id="4_mjp3p"]
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="5_mln28"]
-[ext_resource type="MeshLibrary" uid="uid://jduqkuobtqk7" path="res://MeshLibary/collider_mesh_2.tres" id="6_jjoor"]
+[ext_resource type="MeshLibrary" uid="uid://co4ygwvvonvhb" path="res://MeshLibary/collider_mesh_2.tres" id="6_jjoor"]
 
 [node name="lvl2" type="Node3D"]
 

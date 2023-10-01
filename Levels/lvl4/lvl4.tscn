@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://1pqijytxg0wu"]
 
-[ext_resource type="MeshLibrary" uid="uid://ihxk02a63741" path="res://MeshLibary/collider_mesh_2.tres" id="1_mpsq2"]
+[ext_resource type="MeshLibrary" uid="uid://co4ygwvvonvhb" path="res://MeshLibary/collider_mesh_2.tres" id="1_mpsq2"]
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="2_piajn"]
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="3_8xin6"]
 [ext_resource type="PackedScene" uid="uid://bv7dltqbb6248" path="res://InGameUI/in_game_ui.tscn" id="4_8kgv1"]
