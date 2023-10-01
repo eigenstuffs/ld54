@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmnxvrxq82xpd"]
+[gd_scene load_steps=26 format=3 uid="uid://bmnxvrxq82xpd"]
 
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="1_n5hc6"]
 [ext_resource type="MeshLibrary" uid="uid://dox7l4jbph23s" path="res://MeshLibary/Tiles/tiles.tres" id="1_vptlw"]
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="2_3ocu1"]
+[ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="4_s21ii"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0auox"]
 radius = 6.40406
@@ -17,17 +18,22 @@ size = Vector3(1, 0.797338, 3.27136)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yt3r7"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_401vs"]
+size = Vector3(2.02188, 1, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_otb6d"]
-size = Vector3(9.3606, 1, 6.34323)
+size = Vector3(9.3606, 1.02014, 3.25138)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgqtm"]
-size = Vector3(16.4293, 1, 6.80628)
+size = Vector3(17.83, 0.667, 6.806)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ybj4"]
 size = Vector3(2.36445, 1, 6.05988)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b81fi"]
 size = Vector3(11.3797, 1, 3.49064)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hpt3i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_na0cr"]
 size = Vector3(14.2466, 1, 2.78155)
@@ -36,7 +42,7 @@ size = Vector3(14.2466, 1, 2.78155)
 size = Vector3(10.2549, 1, 1.93372)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s10k3"]
-size = Vector3(8.04394, 0.747613, 0.213241)
+size = Vector3(8.04394, 1.13598, 0.729462)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s2ysp"]
 size = Vector3(15.5479, 1, 13.845)
@@ -226,6 +232,14 @@ shape = SubResource("SphereShape3D_yt3r7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.35905, 1.29546, 0.638923)
 shape = SubResource("SphereShape3D_yt3r7")
 
+[node name="edgeCollider44" type="CollisionShape3D" parent="GridMap/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29258, 1.29546, 0.178422)
+shape = SubResource("BoxShape3D_401vs")
+
+[node name="edgeCollider45" type="CollisionShape3D" parent="GridMap/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.674, 1.295, -2.97052)
+shape = SubResource("BoxShape3D_401vs")
+
 [node name="edgeCollider37" type="CollisionShape3D" parent="GridMap/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4607, 0.0342643, -1.53559)
 shape = SubResource("BoxShape3D_otb6d")
@@ -235,19 +249,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5123, 0.0342643, -2.0427)
 shape = SubResource("BoxShape3D_otb6d")
 
 [node name="edgeCollider39" type="CollisionShape3D" parent="GridMap/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.679, 0.226176, -1.59852)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7252, 0.365779, -1.58317)
 shape = SubResource("BoxShape3D_kgqtm")
 
 [node name="edgeCollider40" type="CollisionShape3D" parent="GridMap/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.412, 0.226176, 0.113398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.412, -0.0231655, 0.113)
 shape = SubResource("BoxShape3D_7ybj4")
 
 [node name="edgeCollider41" type="CollisionShape3D" parent="GridMap/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.891, 0.226176, 0.889925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.891, 0.127469, 0.889925)
 shape = SubResource("BoxShape3D_b81fi")
 
+[node name="edgeCollider46" type="CollisionShape3D" parent="GridMap/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7571, 1.20664, 0.169336)
+shape = SubResource("BoxShape3D_hpt3i")
+
 [node name="edgeCollider42" type="CollisionShape3D" parent="GridMap/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4153, 0.192634, -4.8927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4153, 0.128112, -4.8927)
 shape = SubResource("BoxShape3D_na0cr")
 
 [node name="edgeCollider43" type="CollisionShape3D" parent="GridMap/StaticBody3D"]
@@ -307,3 +325,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67793, 0)
 
 [node name="Camera" parent="." instance=ExtResource("1_n5hc6")]
 target = NodePath("../Dog")
+
+[node name="Sheep" parent="." instance=ExtResource("4_s21ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24504, 2.25862, -1.57359)
+player = NodePath("../Dog")
