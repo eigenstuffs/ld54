@@ -14,7 +14,3 @@ config/name="ld54"
 run/main_scene="res://Camera.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
-LeaderboardBackend="*res://LeaderboardBackend.gd"
