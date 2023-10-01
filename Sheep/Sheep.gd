@@ -17,9 +17,27 @@ var state := states.UNALERTED
 var unalerted_walk : bool = true
 var walk_angle : float = 0.0
 
+var player_node : Node 
+
 # when barked at, switch_state(states.ALERTED)
 func _ready():
+	player_node = get_node(player)
 	switch_state(states.UNALERTED)
+<<<<<<< HEAD
+=======
+	
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	if vel:
+		velocity.x = vel.x
+		velocity.z = vel.z
+	else:
+		velocity.x = move_toward(velocity.x, 0, 0.1)
+		velocity.z = move_toward(velocity.z, 0, 0.1)
+	
+>>>>>>> ad851944e7693359151beabd66fdd764a6ecae2a
 
 func switch_state(new_state : int):
 	$Timer.stop()
@@ -41,6 +59,7 @@ func switch_state(new_state : int):
 	state = new_state
 	
 func _process(delta):
+<<<<<<< HEAD
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	if vel:
@@ -54,12 +73,24 @@ func _process(delta):
 			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed) * -1
 			print(vel)
 			if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 3:
+=======
+	move_and_slide()
+	match state:
+		states.ALERTED:
+			vel = (player_node.global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed) * -1
+#			print(vel)
+			if ((player_node.global_position - global_position) * Vector3(1, 0, 1)).length() > 5:
+>>>>>>> ad851944e7693359151beabd66fdd764a6ecae2a
 				switch_state(states.UNALERTED)
 				print("unaltered")
 		states.UNALERTED:
 			if unalerted_walk:
+<<<<<<< HEAD
 				if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 1.5:
 #					vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), randf() * 2 * PI) * walk_speed
+=======
+				if ((player_node.global_position - global_position) * Vector3(1, 0, 1)).length() > 2:
+>>>>>>> ad851944e7693359151beabd66fdd764a6ecae2a
 					vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle) * walk_speed
 					if vel.length() > 0:
 						var target_position = global_position + vel
