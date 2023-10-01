@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://oq6d2gpr6b3s"]
+[gd_scene load_steps=9 format=3 uid="uid://oq6d2gpr6b3s"]
 
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="1_it5j2"]
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="2_cw73c"]
@@ -6,10 +6,29 @@
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="4_mdoye"]
 [ext_resource type="MeshLibrary" uid="uid://cp8gg0xosttwn" path="res://MeshLibary/mesh_colliders.tres" id="5_f37un"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h14nv"]
+sky_top_color = Color(0.368627, 0.717647, 0.980392, 1)
+sky_horizon_color = Color(0.7, 0.859804, 0.985294, 1)
+ground_bottom_color = Color(0.431373, 0.721569, 0.960784, 1)
+ground_horizon_color = Color(0.7, 0.859804, 0.985294, 1)
+
+[sub_resource type="Sky" id="Sky_p1j6k"]
+sky_material = SubResource("ProceduralSkyMaterial_h14nv")
+
+[sub_resource type="Environment" id="Environment_8yonv"]
+background_mode = 2
+sky = SubResource("Sky_p1j6k")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="lvl3" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8yonv")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.554213, -0.395847, 0.732225, -0.261401, 0.752407, 0.60461, -0.790264, -0.526487, 0.313519, 0.562901, 7.71882, 9.71669)
+transform = Transform3D(0.770739, -0.528089, 0.356488, -0.342655, 0.128157, 0.930679, -0.537167, -0.839463, -0.0821763, 0.562901, 7.71882, 9.71669)
+shadow_enabled = true
 
 [node name="Dog" parent="." instance=ExtResource("1_it5j2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60513, 1.99991, 4.34207)

@@ -34,7 +34,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, 0.1)
 		velocity.z = move_toward(velocity.z, 0, 0.1)
-	
 
 func switch_state(new_state : int):
 	$Timer.stop()
@@ -56,7 +55,14 @@ func switch_state(new_state : int):
 	state = new_state
 	
 func _process(delta):
-	move_and_slide()
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	if vel:
+		velocity.x = vel.x
+		velocity.z = vel.z
+	else:
+		velocity.x = move_toward(velocity.x, 0, 0.1)
+		velocity.z = move_toward(velocity.z, 0, 0.1)
 	match state:
 		states.ALERTED:
 			vel = (player_node.global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed) * -1
@@ -68,6 +74,14 @@ func _process(delta):
 			if unalerted_walk:
 				if ((player_node.global_position - global_position) * Vector3(1, 0, 1)).length() > 2:
 					vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle) * walk_speed
+					if vel.length() > 0:
+						var target_position = global_position + vel
+						look_at(target_position, Vector3(0, 1, 0))
+					if collider_check():
+						unalerted_walk = false
+						$Timer.stop()
+						$Timer.start(randf_range(1.0,3.0))
+						walk_angle = randf_range(-PI, PI)
 				else:
 					unalerted_walk = false
 					$Timer.stop()  # Don't actually know if this is necessary
@@ -81,6 +95,7 @@ func _process(delta):
 			pass
 		_:
 			pass
+	move_and_slide()
 
 func _on_timer_timeout():
 	match state:
@@ -103,3 +118,6 @@ func _on_hurtbox_area_entered(area):
 		pass
 #		print("stomped")
 #		switch_state(states.STOMPED)
+
+func collider_check() -> bool:
+	return !$Raycasts/RayCast3D.is_colliding()
