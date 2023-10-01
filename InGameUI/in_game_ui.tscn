@@ -69,6 +69,28 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Pause"
 
+[node name="Labels" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SheepCounter" type="Label" parent="Control/Labels"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Level" type="Label" parent="Control/Labels"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Label" parent="Control/Labels"]
+layout_mode = 0
+offset_left = 1104.0
+offset_top = 608.0
+offset_right = 1144.0
+offset_bottom = 631.0
+
 [connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Control" method="_on_resume_pressed"]
 [connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/Retry" to="Control" method="_on_retry_pressed"]
 [connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/Quit" to="Control" method="_on_quit_pressed"]

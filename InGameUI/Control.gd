@@ -1,31 +1,22 @@
 extends Control
 
 # Exposed variables
-var sheepCounterLabel: Label
-var levelLabel: Label
-var timerLabel: Label
-var pauseButton: Button
-var colorRect: ColorRect
-var centerContainer: CenterContainer
-var retryButton: Button
-var quitButton: Button
-var resumeButton: Button
+
+@onready var sheepCounterLabel: Label = $Labels/SheepCounter
+@onready var levelLabel: Label = $Labels/Level
+@onready var timerLabel: Label = $Labels/Timer
+@onready var colorRect: ColorRect = $PauseMenu
+@onready var centerContainer: CenterContainer = $PauseMenu/CenterContainer
+@onready var pauseButton: Button = $Pause
+@onready var retryButton: Button = $PauseMenu/CenterContainer/VBoxContainer/Retry
+@onready var quitButton: Button = $PauseMenu/CenterContainer/VBoxContainer/Quit
+@onready var resumeButton: Button = $PauseMenu/CenterContainer/VBoxContainer/Resume
 
 # Timer variables
 var startTime: float
 var pausedTime: float
 var isPaused: bool = false
-
-func _ready():
-	# Connect button signals
-	pauseButton.connect_signal("pressed", self, "_on_pause_pressed")
-	retryButton.connect_signal("pressed", self, "_on_retry_pressed")
-	quitButton.connect_signal("pressed", self, "_on_quit_pressed")
-	resumeButton.connect_signal("pressed", self, "_on_resume_pressed")
-
-	# Start the timer
-	startTime = Time.get_ticks_msec() / 1000.0
-	update_timer_label()
+var time_passed : float = 0.0
 
 func _process(delta):
 	# Check for the number of objects with the "Sheep" tag
@@ -34,14 +25,16 @@ func _process(delta):
 
 	# Update the timer if not paused
 	if !isPaused:
-		update_timer_label()
+		update_timer_label(delta)
 
-func update_timer_label():
+func update_timer_label(delta):
 	var currentTime = Time.get_ticks_msec() / 1000.0
 	var elapsedTime = currentTime - startTime - pausedTime
-	var minutes = int(elapsedTime / 60)
-	var seconds = int(elapsedTime % 60)
-	timerLabel.text = String().format("%02d:%02d") %[minutes, seconds]
+	var minutes = int(elapsedTime / 60.0)
+	var seconds = int(int(elapsedTime) % 60)
+	if !isPaused:
+		time_passed += delta
+		timerLabel.text = "%s.%03d" % [int(time_passed), int((time_passed - int(time_passed)) * 1000)] + "s"
 
 # Custom signals for button presses
 signal pause_button_pressed
