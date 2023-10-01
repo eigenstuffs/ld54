@@ -13,6 +13,10 @@ func _process(delta):
 
 
 func red_flare():
-	environment.background_mode = Environment.BG_COLOR
-	environment.background_color = Color.RED
+	var amt = 1
+	for i in range(50):
+		await get_tree().create_timer(0.02).timeout
+		amt -= 0.02
+		environment.fog_sky_affect = amt
+		environment.fog_density = amt * 0.01
 	pass
