@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cjnjsoob51yu2"]
+
+[node name="TilesCollide" type="Node3D"]
