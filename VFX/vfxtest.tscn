@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://b2yg351lk8wv5"]
+
+[ext_resource type="Script" path="res://Camera/CameraRef.gd" id="1_aeb0w"]
+[ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="2_imn07"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rjr2l"]
+size = Vector3(2.0111, 0.565289, 1.99215)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x451h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2b7ue"]
+albedo_color = Color(0.878431, 0, 0, 1)
+metallic = 0.52
+metallic_specular = 0.54
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndx08"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 0.5
+emission_ring_inner_radius = 0.0
+direction = Vector3(1.04, 0.19, 0)
+spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+damping_min = 0.893
+damping_max = 1.786
+
+[sub_resource type="SphereMesh" id="SphereMesh_oug8u"]
+radius = 0.75
+height = 1.5
+
+[sub_resource type="Skin" id="Skin_7y714"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p20n5"]
+albedo_color = Color(1, 0, 0, 1)
+metallic = 0.3
+metallic_specular = 0.72
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m4qr3"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+spread = 90.8
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_2fr7e"]
+radius = 0.1
+height = 0.5
+
+[sub_resource type="Skin" id="Skin_m1nlg"]
+
+[node name="vfxtest" type="Node3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3.26091, 0, 0, 0, 1, 0, 0, 0, 3.30044, 0, -0.443452, 0)
+shape = SubResource("BoxShape3D_rjr2l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.26091, 0, 0, 0, 1, 0, 0, 0, 3.30044, 0, 0, 0)
+mesh = SubResource("PlaneMesh_x451h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.495019, 0.867737, -0.0445986, 0.357916, -0.156872, 0.920482, 0.79174, -0.471619, -0.388231, -0.929342, 1.21932, 0.330718)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.0814089, 0)
+material_override = SubResource("StandardMaterial3D_2b7ue")
+amount = 3
+sub_emitter = NodePath("../GPUParticles3D2")
+lifetime = 0.67
+process_material = SubResource("ParticleProcessMaterial_ndx08")
+draw_pass_1 = SubResource("SphereMesh_oug8u")
+draw_skin = SubResource("Skin_7y714")
+
+[node name="Dog" parent="." instance=ExtResource("2_imn07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.728593, 0)
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 5, 3)
+
+[node name="Camera" type="Node3D" parent="."]
+script = ExtResource("1_aeb0w")
+target = NodePath("../Dog")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.997564, -4.36049e-08, -0.0697565, 0.0697565, -3.04915e-09, 0.997564, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_p20n5")
+emitting = false
+amount = 30
+explosiveness = 0.7
+process_material = SubResource("ParticleProcessMaterial_m4qr3")
+draw_pass_1 = SubResource("SphereMesh_2fr7e")
+draw_skin = SubResource("Skin_m1nlg")
