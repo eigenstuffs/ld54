@@ -50,3 +50,27 @@ player = NodePath("../Dog")
 [node name="Sheep6" parent="." instance=ExtResource("5_rgsoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.38562, 2, -3.37283)
 player = NodePath("../Dog")
+
+[node name="Sheep7" parent="." instance=ExtResource("5_rgsoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38562, 2, -11.5658)
+player = NodePath("../Dog")
+
+[node name="Sheep8" parent="." instance=ExtResource("5_rgsoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.38562, 2, -13.3728)
+player = NodePath("../Dog")
+
+[node name="Sheep9" parent="." instance=ExtResource("5_rgsoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38562, 2, -14.3728)
+player = NodePath("../Dog")
+
+[node name="Sheep10" parent="." instance=ExtResource("5_rgsoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3856, 2, -21.5658)
+player = NodePath("../Dog")
+
+[node name="Sheep11" parent="." instance=ExtResource("5_rgsoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3856, 2, -23.3728)
+player = NodePath("../Dog")
+
+[node name="Sheep12" parent="." instance=ExtResource("5_rgsoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3856, 2, -24.3728)
+player = NodePath("../Dog")
