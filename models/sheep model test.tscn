@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkfo5o0wuyh41"]
+
+[ext_resource type="ArrayMesh" uid="uid://chfny0g6xbx57" path="res://models/sheep.obj" id="1_8lqq5"]
+[ext_resource type="Material" uid="uid://cmocrvl2j8ifc" path="res://models/black clay.tres" id="2_n17c8"]
+[ext_resource type="Material" uid="uid://bp0fyiddggvf1" path="res://models/dark black clay.tres" id="3_ymmsj"]
+[ext_resource type="Material" uid="uid://b6i71sovbr3yq" path="res://models/white clay.tres" id="4_fwufu"]
+[ext_resource type="Material" uid="uid://dioreue18lsi7" path="res://models/shiny black.tres" id="5_2q1uu"]
+[ext_resource type="Material" uid="uid://ck7kt2kqgsnuu" path="res://models/shiny white.tres" id="6_mowss"]
+
+[node name="sheep model" type="Node3D"]
+
+[node name="Sheep" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_8lqq5")
+surface_material_override/0 = ExtResource("2_n17c8")
+surface_material_override/1 = ExtResource("3_ymmsj")
+surface_material_override/2 = ExtResource("4_fwufu")
+surface_material_override/3 = ExtResource("5_2q1uu")
+surface_material_override/4 = ExtResource("6_mowss")
+surface_material_override/5 = ExtResource("2_n17c8")
+surface_material_override/6 = ExtResource("4_fwufu")
+surface_material_override/7 = ExtResource("4_fwufu")

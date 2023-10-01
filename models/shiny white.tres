@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ck7kt2kqgsnuu"]
+
+[ext_resource type="Texture2D" uid="uid://bhu6sw14igjct" path="res://models/Fingerprints01_1K_normal.png" id="1_4qls3"]
+[ext_resource type="Texture2D" uid="uid://bccm2h38jsxqo" path="res://models/Fingerprints01_1K.png" id="2_1ouga"]
+
+[resource]
+albedo_color = Color(0.792157, 0.764706, 0.717647, 1)
+metallic = 0.1
+metallic_specular = 1.0
+roughness = 0.0
+roughness_texture = ExtResource("2_1ouga")
+normal_scale = 0.35
+normal_texture = ExtResource("1_4qls3")
