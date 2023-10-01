@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2yg351lk8wv5"]
+[gd_scene load_steps=20 format=3 uid="uid://b2yg351lk8wv5"]
 
 [ext_resource type="Script" path="res://Camera/CameraRef.gd" id="1_aeb0w"]
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="2_imn07"]
@@ -13,6 +13,19 @@ albedo_color = Color(0.878431, 0, 0, 1)
 metallic = 0.52
 metallic_specular = 0.54
 
+[sub_resource type="Gradient" id="Gradient_ng7mm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n56fh"]
+gradient = SubResource("Gradient_ng7mm")
+
+[sub_resource type="Curve" id="Curve_yumhe"]
+_data = [Vector2(0.0055147, 0.0421052), 0.0, 12.1134, 0, 0, Vector2(0.237132, 1), 1.30887, 0.0, 0, 0, Vector2(0.698529, 0.915789), -0.490827, -0.490827, 0, 0, Vector2(1, 0.526316), -2.11625, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3hvd1"]
+curve = SubResource("Curve_yumhe")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndx08"]
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
@@ -21,10 +34,13 @@ emission_ring_radius = 0.5
 emission_ring_inner_radius = 0.0
 direction = Vector3(1.04, 0.19, 0)
 spread = 0.0
+gravity = Vector3(0, -4.8, 0)
 initial_velocity_min = 0.5
 initial_velocity_max = 1.0
 damping_min = 0.893
 damping_max = 1.786
+scale_curve = SubResource("CurveTexture_3hvd1")
+color_ramp = SubResource("GradientTexture1D_n56fh")
 
 [sub_resource type="SphereMesh" id="SphereMesh_oug8u"]
 radius = 0.75
@@ -37,19 +53,33 @@ albedo_color = Color(1, 0, 0, 1)
 metallic = 0.3
 metallic_specular = 0.72
 
+[sub_resource type="Curve" id="Curve_a6rm0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.808824, 0.694737), -1.74279, -1.78947, 0, 0, Vector2(1, 0), -7.26802, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_oaeqj"]
+curve = SubResource("Curve_a6rm0")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m4qr3"]
 emission_shape = 2
-emission_sphere_radius = 1.0
+emission_sphere_radius = 0.4
 particle_flag_align_y = true
 spread = 90.8
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+scale_curve = SubResource("CurveTexture_oaeqj")
 
-[sub_resource type="SphereMesh" id="SphereMesh_2fr7e"]
+[sub_resource type="Curve" id="Curve_wereu"]
+_data = [Vector2(0.00363636, 0.0947368), 0.0, 2.55418, 0, 0, Vector2(0.145455, 0.378947), -1.15789, -1.15789, 0, 0, Vector2(1, 0.0315789), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_cm5py"]
 radius = 0.1
-height = 0.5
+sections = 3
+cap_bottom = false
+curve = SubResource("Curve_wereu")
 
-[sub_resource type="Skin" id="Skin_m1nlg"]
+[sub_resource type="Skin" id="Skin_8mlxw"]
 
 [node name="vfxtest" type="Node3D"]
 
@@ -59,6 +89,7 @@ shape = SubResource("BoxShape3D_rjr2l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(3.26091, 0, 0, 0, 1, 0, 0, 0, 3.30044, 0, 0, 0)
+visible = false
 mesh = SubResource("PlaneMesh_x451h")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -67,12 +98,23 @@ transform = Transform3D(0.495019, 0.867737, -0.0445986, 0.357916, -0.156872, 0.9
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.0814089, 0)
 material_override = SubResource("StandardMaterial3D_2b7ue")
-amount = 3
-sub_emitter = NodePath("../GPUParticles3D2")
+amount = 5
 lifetime = 0.67
+explosiveness = 0.36
 process_material = SubResource("ParticleProcessMaterial_ndx08")
 draw_pass_1 = SubResource("SphereMesh_oug8u")
 draw_skin = SubResource("Skin_7y714")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0814089, 3.5585e-09, 0)
+material_override = SubResource("StandardMaterial3D_p20n5")
+amount = 30
+explosiveness = 0.85
+trail_lifetime = 2.01
+process_material = SubResource("ParticleProcessMaterial_m4qr3")
+draw_passes = 2
+draw_pass_2 = SubResource("TubeTrailMesh_cm5py")
+draw_skin = SubResource("Skin_8mlxw")
 
 [node name="Dog" parent="." instance=ExtResource("2_imn07")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.728593, 0)
@@ -84,13 +126,3 @@ transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -
 [node name="Camera" type="Node3D" parent="."]
 script = ExtResource("1_aeb0w")
 target = NodePath("../Dog")
-
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 0.997564, -4.36049e-08, -0.0697565, 0.0697565, -3.04915e-09, 0.997564, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_p20n5")
-emitting = false
-amount = 30
-explosiveness = 0.7
-process_material = SubResource("ParticleProcessMaterial_m4qr3")
-draw_pass_1 = SubResource("SphereMesh_2fr7e")
-draw_skin = SubResource("Skin_m1nlg")

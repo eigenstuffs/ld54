@@ -12,13 +12,16 @@ enum states {
 }
 var state := states.UNALERTED
 @export var player : NodePath
-@export var run_speed : float = 2.0
+@export var run_speed : float = 4.0
 @export var walk_speed : float = 1.0
 var unalerted_walk : bool = true
 var walk_angle : float = 0.0
+var just_switched_walk_angle : bool = false
+var player_node : Node 
 
 # when barked at, switch_state(states.ALERTED)
 func _ready():
+	player_node = get_node(player)
 	switch_state(states.UNALERTED)
 	
 func _physics_process(delta):
@@ -31,7 +34,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, 0.1)
 		velocity.z = move_toward(velocity.z, 0, 0.1)
-	move_and_slide()
 
 func switch_state(new_state : int):
 	$Timer.stop()
@@ -41,7 +43,7 @@ func switch_state(new_state : int):
 		states.UNALERTED:
 			unalerted_walk = true
 			walk_angle = randf_range(-PI, PI)
-			$Timer.start(randf_range(0.5, 5.0))
+			$Timer.start(randf_range(3.0, 5.0))
 		states.STOMPED:
 			$Timer.start(0.5)
 			var a = create_tween()
@@ -53,21 +55,28 @@ func switch_state(new_state : int):
 	state = new_state
 	
 func _process(delta):
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	if vel:
+		velocity.x = vel.x
+		velocity.z = vel.z
+	else:
+		velocity.x = lerpf(velocity.x, 0.0, delta * 0.2)
+		velocity.z = lerpf(velocity.z, 0.0, delta * 0.2)
+	if velocity.length() > 0:
+		var target_position = global_position + velocity
+		$Model.rotation.y = lerp_angle($Model.rotation.y, atan2(velocity.x, velocity.z), delta * 10.0)
+		$FrontDetection.look_at(target_position, Vector3(0, 1, 0))
 	match state:
 		states.ALERTED:
-			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed) * -1
-			print(vel)
-			if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 5:
+			vel = (player_node.global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed) * -1
+#			print(vel)
+			if ((player_node.global_position - global_position) * Vector3(1, 0, 1)).length() > 5:
 				switch_state(states.UNALERTED)
-				print("unaltered")
 		states.UNALERTED:
 			if unalerted_walk:
-				if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 2:
-					vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle)
-				else:
-					unalerted_walk = false
-					$Timer.stop()  # Don't actually know if this is necessary
-					$Timer.start(randf_range(0.5, 2.0))
+				#if ((player_node.global_position - global_position) * Vector3(1, 0, 1)).length() > 2:
+				vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle) * walk_speed
 			else:
 				vel = Vector3()
 		states.STOMPED:
@@ -77,12 +86,19 @@ func _process(delta):
 			pass
 		_:
 			pass
+	move_and_slide()
 
 func _on_timer_timeout():
 	match state:
 		states.UNALERTED:
+			if unalerted_walk:
+				$Timer.stop()
+				$Timer.start(randf_range(3.0, 5.0))
+			else:
+				walk_angle = randf_range(-PI, PI)
+				$Timer.stop()
+				$Timer.start(randf_range(3.0, 5.0))
 			unalerted_walk = !unalerted_walk
-			$Timer.start(randf_range(0.5, 5.0))
 		states.STOMPED:
 			switch_state(states.DEAD)
 		_:
@@ -93,5 +109,20 @@ func _on_hurtbox_area_entered(area):
 		print("barked")
 		switch_state(states.ALERTED)
 	elif area is Hitbox:
-		print("stomped")
-		switch_state(states.STOMPED)
+		pass
+#		print("stomped")
+#		switch_state(states.STOMPED)
+
+func collider_check() -> bool:
+	return !$Raycasts/RayCast3D.is_colliding()
+
+
+func _on_front_detection_body_entered(body):
+	match state:
+		states.UNALERTED:
+			# fix this being able to happen multiple times with one body maybe
+			if unalerted_walk:
+				$Timer.stop()
+				$Timer.start(randf_range(3.0, 5.0))
+				unalerted_walk = true
+				walk_angle = walk_angle + PI + randf_range(-PI/6, PI/6)

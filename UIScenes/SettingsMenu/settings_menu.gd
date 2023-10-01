@@ -1,7 +1,6 @@
 extends Control
 
+
+
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://UIControl/MainMenu/UIcontrol.tscn")
-
-
- 
+	get_tree().change_scene_to_file("res://UIScenes/MainMenu/UIcontrol.tscn")

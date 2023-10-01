@@ -1,15 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwbecuthiqcsw"]
+[gd_scene load_steps=9 format=3 uid="uid://dwbecuthiqcsw"]
 
 [ext_resource type="Script" path="res://Dog/Dog.gd" id="1_4wscr"]
 [ext_resource type="Script" path="res://Dog/Bark.gd" id="2_xhr5x"]
 [ext_resource type="Script" path="res://Dog/Hitbox.gd" id="3_udmv1"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g3k0"]
+albedo_color = Color(1, 0.772549, 0.196078, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_3l1xe"]
+material = SubResource("StandardMaterial3D_8g3k0")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w6hxv"]
 radius = 1.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_48n7n"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_502d5"]
+radius = 0.485838
+height = 0.979673
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vf3q7"]
 size = Vector3(1.1, 1, 1.1)
@@ -30,7 +36,7 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("SphereShape3D_w6hxv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_48n7n")
+shape = SubResource("CapsuleShape3D_502d5")
 
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 2

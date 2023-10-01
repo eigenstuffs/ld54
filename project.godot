@@ -18,3 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 LeaderboardBackend="*res://LeaderboardBackend.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=1
