@@ -1,23 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://xar8o88nibr8"]
+[gd_scene load_steps=6 format=3 uid="uid://xar8o88nibr8"]
 
 [ext_resource type="Script" path="res://Sheep/Sheep.gd" id="1_u6due"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_2xufd"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_35cq2"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0apr1"]
+radius = 0.485838
+height = 0.979673
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7lfgw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q7wb3"]
+size = Vector3(1, 0.737027, 0.58)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2xufd"]
 
 [node name="Sheep" type="CharacterBody3D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_u6due")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_2xufd")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_35cq2")
+shape = SubResource("CapsuleShape3D_0apr1")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -28,5 +30,18 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 shape = SubResource("BoxShape3D_7lfgw")
 
+[node name="FrontDetection" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.811086)
+shape = SubResource("BoxShape3D_q7wb3")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
+mesh = SubResource("BoxMesh_2xufd")
+skeleton = NodePath("../..")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="FrontDetection" to="." method="_on_front_detection_body_entered"]
