@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bccm2h38jsxqo" path="res://models/Fingerprints01_1K.png" id="2_x6hmv"]
 
 [resource]
-albedo_color = Color(0.466667, 0.466667, 0.466667, 1)
+albedo_color = Color(0.223529, 0.196078, 0.196078, 1)
 roughness_texture = ExtResource("2_x6hmv")
 normal_enabled = true
 normal_texture = ExtResource("1_sbb5a")
