@@ -16,4 +16,4 @@ func _on_lvl_4_pressed():
 	get_tree().change_scene_to_file("res://Levels/lvl4/lvl4.tscn")
 
 func _on_lvl_5_pressed():
-	get_tree().change_scene_to_file("res://Levels/lvl5/lvl5.tscn")
+	get_tree().change_scene_to_file("res://Levels/lvl5/lvl_5.tscn")
