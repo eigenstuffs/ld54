@@ -22,11 +22,15 @@ color = Color(0.729412, 0.764706, 0.898039, 1)
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 45.0
+anchors_preset = -1
+anchor_left = 0.039
+anchor_top = 0.864
+anchor_right = 0.109
+anchor_bottom = 0.949
+offset_left = 0.0719991
+offset_top = 0.127985
+offset_right = -0.568006
+offset_bottom = 0.0479608
 grow_vertical = 0
 size_flags_horizontal = 0
 text = "Back"
