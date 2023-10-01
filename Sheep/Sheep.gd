@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 const SPEED = 5.0
 
 var vel: Vector3 = Vector3()
@@ -23,11 +23,11 @@ func _ready():
 	
 func _physics_process(delta):
 	# Add the gravity.
-#	if not is_on_floor():
-#		velocity.y -= gravity * delta
+	if not is_on_floor():
+		velocity.y -= gravity * delta
 	if vel:
 		velocity.x = vel.x
-		velocity.z = vel.y
+		velocity.z = vel.z
 	else:
 		velocity.x = move_toward(velocity.x, 0, 0.1)
 		velocity.z = move_toward(velocity.z, 0, 0.1)
@@ -55,13 +55,19 @@ func switch_state(new_state : int):
 func _process(delta):
 	match state:
 		states.ALERTED:
-			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed)
-			if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 10:
+			vel = (get_node(player).global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed) * -1
+			print(vel)
+			if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 5:
 				switch_state(states.UNALERTED)
 				print("unaltered")
 		states.UNALERTED:
 			if unalerted_walk:
-				vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle)
+				if ((get_node(player).global_position - global_position) * Vector3(1, 0, 1)).length() > 2:
+					vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle)
+				else:
+					unalerted_walk = false
+					$Timer.stop()  # Don't actually know if this is necessary
+					$Timer.start(randf_range(0.5, 2.0))
 			else:
 				vel = Vector3()
 		states.STOMPED:

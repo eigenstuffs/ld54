@@ -26,6 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.842762, 2.37259)
 player = NodePath("../Dog")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_1c1tg")
@@ -34,3 +35,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499422, 0)
 shape = SubResource("BoxShape3D_e6e8u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.185804, 0.982587, 0, -0.982587, 0.185804, 0, 4.08521, 0)

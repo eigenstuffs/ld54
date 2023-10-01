@@ -6,5 +6,5 @@
 script = ExtResource("1_ls4yr")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 3, 3)
+transform = Transform3D(0.558527, -0.698803, 0.446903, 0, 0.538771, 0.842452, -0.829486, -0.470533, 0.300918, 1.93841, 3.844, 1.48675)
 fov = 100.4
