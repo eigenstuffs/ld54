@@ -5,8 +5,11 @@ var flaring = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	red_flare()
-	pass # Replace with function body.
+	# Setup
+	environment.fog_enabled = true
+	environment.fog_density = 0
+	environment.fog_sky_affect = 0
+	environment.fog_light_color = Color.RED
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
