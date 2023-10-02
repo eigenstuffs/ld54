@@ -1,13 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://dg0euhf0w417k"]
+[gd_scene load_steps=27 format=3 uid="uid://dg0euhf0w417k"]
 
 [ext_resource type="Script" path="res://test/Level.gd" id="1_1m3dt"]
 [ext_resource type="PackedScene" uid="uid://bmnxvrxq82xpd" path="res://Levels/lvl1/lvl1.tscn" id="1_f3cbf"]
 [ext_resource type="Script" path="res://InGameUI/Control.gd" id="3_cn6co"]
 [ext_resource type="PackedScene" uid="uid://bcgso4vo7nkjw" path="res://UIScenes/Credits/credits_scene.tscn" id="3_dgbcl"]
+[ext_resource type="Texture2D" uid="uid://cw2xmf3dddypn" path="res://UI Assets/sheep_counter.png" id="4_60f7w"]
 [ext_resource type="Script" path="res://UIScenes/MainMenu/UIcontrol.gd" id="4_ae2ov"]
 [ext_resource type="PackedScene" uid="uid://diugumuikudpq" path="res://UIScenes/LVLSelect/lvl_select.tscn" id="4_h8rrm"]
 [ext_resource type="PackedScene" uid="uid://4co4oba1mb8v" path="res://UIScenes/SettingsMenu/settings_menu.tscn" id="5_h1u70"]
 [ext_resource type="Texture2D" uid="uid://0cj8tjdppofj" path="res://UI Assets/start_idle.png" id="5_nyl0i"]
+[ext_resource type="FontFile" uid="uid://csdj30pv0mjvj" path="res://UI Assets/arial.ttf" id="5_odslo"]
 [ext_resource type="Texture2D" uid="uid://b4vc2mydsx5se" path="res://UI Assets/start_hover.png" id="6_c5bla"]
 [ext_resource type="PackedScene" uid="uid://u3ypm88eckwx" path="res://UIScenes/HowTo/HowTo.tscn" id="6_ygoeb"]
 [ext_resource type="Texture2D" uid="uid://dsttj1nlafqa5" path="res://UI Assets/how2_idle.png" id="7_egwsj"]
@@ -20,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://b1xerv75jfsdw" path="res://UI Assets/credits_hover.png" id="14_7mwjb"]
 [ext_resource type="Texture2D" uid="uid://c427t26qu01cg" path="res://UI Assets/quit_idle.png" id="15_wl10x"]
 [ext_resource type="Texture2D" uid="uid://76n3nrsenfwq" path="res://UI Assets/quit_hover.png" id="16_uc5a3"]
+[ext_resource type="PackedScene" uid="uid://bvp21mxinukgl" path="res://UIScenes/GameOver/game_over.tscn" id="23_j5or4"]
 
 [sub_resource type="Animation" id="Animation_3fqpw"]
 resource_name = "Fade"
@@ -90,6 +93,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_cn6co")
+game_over = NodePath("../../GameOver")
 
 [node name="PauseMenu" type="ColorRect" parent="Level/CanvasLayer/InGameUI/Control"]
 visible = false
@@ -157,10 +161,19 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="SheepCounter2" type="Sprite2D" parent="Level/CanvasLayer/InGameUI/Control/Labels"]
+position = Vector2(96, 64)
+texture = ExtResource("4_60f7w")
+
 [node name="SheepCounter" type="Label" parent="Level/CanvasLayer/InGameUI/Control/Labels"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 148.0
+offset_top = 55.0
+offset_right = 188.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("5_odslo")
+theme_override_font_sizes/font_size = 32
+text = "0"
 
 [node name="Level" type="Label" parent="Level/CanvasLayer/InGameUI/Control/Labels"]
 layout_mode = 0
@@ -266,6 +279,9 @@ layout_mode = 1
 [node name="HowTo" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("6_ygoeb")]
 visible = false
 layout_mode = 1
+
+[node name="GameOver" parent="Level/CanvasLayer" instance=ExtResource("23_j5or4")]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Level/CanvasLayer"]
 root_node = NodePath("../..")

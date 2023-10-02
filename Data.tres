@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="Data" load_steps=2 format=3 uid="uid://b1i3ox4esrhp"]
-
-[ext_resource type="Script" path="res://leaderboard_data.gd" id="1_06ipa"]
-
-[resource]
-script = ExtResource("1_06ipa")

@@ -2,6 +2,8 @@ extends Control
 
 # Exposed variables
 
+@export var game_over : NodePath
+
 @onready var sheepCounterLabel: Label = $Labels/SheepCounter
 @onready var levelLabel: Label = $Labels/Level
 @onready var timerLabel: Label = $Labels/Timer
@@ -24,6 +26,8 @@ func _ready():
 func init():
 	$Pause.show()
 	$Labels.show()
+	time_passed = 0.0
+	isPaused = false
 
 func _process(delta):
 	# Check for the number of objects with the "Sheep" tag
@@ -80,3 +84,5 @@ func _on_resume_pressed():
 	
 func stop_timer():
 	LeaderboardBackend.can_move = false
+	get_node(game_over).show()
+	get_node(game_over).initialize(time_passed)
