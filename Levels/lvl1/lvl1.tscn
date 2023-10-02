@@ -7,21 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://bv7dltqbb6248" path="res://InGameUI/in_game_ui.tscn" id="4_tresk"]
 [ext_resource type="Script" path="res://Levels/lvl2/WorldEnvironmentEffects.gd" id="6_se8w7"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_wxmn3"]
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6g4lh"]
-sky_top_color = Color(0.654902, 0.811765, 0.611765, 1)
+sky_top_color = Color(0.458824, 0.784314, 0.835294, 1)
 sky_horizon_color = Color(0.223529, 0.482353, 0.521569, 1)
+sky_curve = 1.11964
 ground_bottom_color = Color(0.223529, 0.482353, 0.521569, 1)
 ground_horizon_color = Color(0.223529, 0.482353, 0.521569, 1)
 
-[sub_resource type="Sky" id="Sky_u3gc0"]
+[sub_resource type="Sky" id="Sky_4eou2"]
 sky_material = SubResource("ProceduralSkyMaterial_6g4lh")
 
 [sub_resource type="Environment" id="Environment_kuwsq"]
 background_mode = 2
 background_color = Color(0.698039, 0.698039, 0.768627, 1)
-sky = SubResource("Sky_u3gc0")
+sky = SubResource("Sky_4eou2")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
@@ -33,7 +32,13 @@ fog_light_color = Color(1, 0, 0, 1)
 fog_density = 0.0
 fog_sky_affect = 0.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_wxmn3"]
+
 [node name="lvl1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kuwsq")
+script = ExtResource("6_se8w7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.466877, -0.449679, 0.761456, -0.261401, 0.752407, 0.60461, -0.844805, -0.481324, 0.233735, 0.562901, 7.71882, 9.71669)
@@ -68,7 +73,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24034, 59.7981)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -0.625423, 0, 0.184898)
 shape = SubResource("SphereShape3D_wxmn3")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_kuwsq")
-script = ExtResource("6_se8w7")
