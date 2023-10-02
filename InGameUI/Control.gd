@@ -28,7 +28,6 @@ func init():
 func _process(delta):
 	# Check for the number of objects with the "Sheep" tag
 	var sheepCount = get_tree().get_nodes_in_group("Sheep").size()
-	print(sheepCount)
 	sheepCounterLabel.text = str(sheepCount)
 
 	# Update the timer if not paused
