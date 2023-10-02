@@ -80,4 +80,4 @@ func _on_resume_pressed():
 	centerContainer.hide()
 	
 func stop_timer():
-	LeaderboardBackend.can_walk = false
+	LeaderboardBackend.can_move = false
