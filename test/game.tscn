@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dg0euhf0w417k"]
+[gd_scene load_steps=30 format=3 uid="uid://dg0euhf0w417k"]
 
 [ext_resource type="Script" path="res://test/Level.gd" id="1_1m3dt"]
 [ext_resource type="PackedScene" uid="uid://bmnxvrxq82xpd" path="res://Levels/lvl1/lvl1.tscn" id="1_f3cbf"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://c427t26qu01cg" path="res://UI Assets/quit_idle.png" id="15_wl10x"]
 [ext_resource type="Texture2D" uid="uid://76n3nrsenfwq" path="res://UI Assets/quit_hover.png" id="16_uc5a3"]
 [ext_resource type="PackedScene" uid="uid://bvp21mxinukgl" path="res://UIScenes/GameOver/game_over.tscn" id="23_j5or4"]
+[ext_resource type="AudioStream" uid="uid://dq86mu3c1j3oq" path="res://Sound/BR LD54 SHEEP Loop V02.mp3" id="26_hqlv1"]
 
 [sub_resource type="Animation" id="Animation_3fqpw"]
 resource_name = "Fade"
@@ -273,21 +274,26 @@ texture_focused = ExtResource("16_uc5a3")
 [node name="CreditsScene" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("3_dgbcl")]
 visible = false
 layout_mode = 1
+offset_top = 8.0
+offset_bottom = 8.0
 
 [node name="lvlSelect" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("4_h8rrm")]
 visible = false
 layout_mode = 1
 
 [node name="PlayButton2" type="TextureButton" parent="Level/CanvasLayer/MainMenu/lvlSelect"]
-layout_mode = 2
-anchor_left = 0.399
-anchor_top = 0.691
-anchor_right = 0.595
-anchor_bottom = 0.811
-offset_left = 0.352009
-offset_top = 0.231971
-offset_right = 74.56
-offset_bottom = 25.472
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -88.0
+offset_right = 188.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 0
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("5_nyl0i")
 texture_pressed = ExtResource("6_c5bla")
@@ -312,7 +318,9 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -20.0
+stream = ExtResource("26_hqlv1")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Level/CanvasLayer/InGameUI/Control" method="_on_resume_pressed"]
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Quit" to="Level/CanvasLayer/InGameUI/Control" method="_on_quit_pressed"]

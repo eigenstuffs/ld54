@@ -23,6 +23,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("ui_accept") and LeaderboardBackend.can_move:
 		bark()
+		$AudioStreamPlayer.play()
 		
 func _process(delta):
 	if LeaderboardBackend.can_move: move_and_slide()

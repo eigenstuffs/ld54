@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://csqoc1mqompl8"]
+[gd_scene load_steps=4 format=3 uid="uid://csqoc1mqompl8"]
 
 [ext_resource type="Script" path="res://DeathPlane.gd" id="1_hdg0s"]
+[ext_resource type="AudioStream" uid="uid://b2y6dp1gsfp45" path="res://Sound/BR_LD54_SHEEP_SFX_dying_02.wav" id="2_48nvs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4147y"]
 size = Vector3(1000, 1, 1000)
@@ -9,7 +10,10 @@ size = Vector3(1000, 1, 1000)
 script = ExtResource("1_hdg0s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -15, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -30, 2.08165e-12)
 shape = SubResource("BoxShape3D_4147y")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_48nvs")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
