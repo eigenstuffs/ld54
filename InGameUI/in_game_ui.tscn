@@ -12,7 +12,6 @@ offset_bottom = 40.0
 script = ExtResource("1_xhoik")
 
 [node name="PauseMenu" type="ColorRect" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 28.925

@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-class_name Sheep
-
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 const SPEED = 5.0
 
@@ -86,10 +84,6 @@ func _process(delta):
 			if unalerted_walk:
 				#if ((player_node.global_position - global_position) * Vector3(1, 0, 1)).length() > 2:
 				vel = Vector3(1, 0, 1).rotated(Vector3(0, 1, 0), walk_angle) * walk_speed
-				if !is_safe:
-					walk_angle = randf_range(-PI, PI)
-					vel = Vector3(0,0,0)
-					switch_state(states.UNALERTED)
 			else:
 				vel = Vector3()
 		states.STOMPED:
@@ -126,11 +120,9 @@ func _on_hurtbox_area_entered(area):
 #		print("stomped")
 #		switch_state(states.STOMPED)
 
-func is_safe() -> bool:
-	for i in $Rays.get_children():
-		if !i.is_colliding():
-			return false
-	return true
+func collider_check() -> bool:
+	return !$Raycasts/RayCast3D.is_colliding()
+
 
 func _on_front_detection_body_entered(body):
 	match state:

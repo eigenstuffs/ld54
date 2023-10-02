@@ -1,28 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmnxvrxq82xpd"]
+[gd_scene load_steps=11 format=3 uid="uid://bmnxvrxq82xpd"]
 
 [ext_resource type="MeshLibrary" uid="uid://1t8a35xm7aj3" path="res://MeshLibary/mesh_colliders.tres" id="1_dtmn6"]
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="1_n5hc6"]
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="2_3ocu1"]
-[ext_resource type="PackedScene" uid="uid://cgn6oikc8pmfm" path="res://test/death_plane.tscn" id="4_bc3dx"]
-[ext_resource type="Script" path="res://Levels/lvl1/Goal.gd" id="4_i50jg"]
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="4_s21ii"]
+[ext_resource type="PackedScene" uid="uid://bv7dltqbb6248" path="res://InGameUI/in_game_ui.tscn" id="4_tresk"]
 [ext_resource type="Script" path="res://Levels/lvl2/WorldEnvironmentEffects.gd" id="6_se8w7"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_wxmn3"]
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6g4lh"]
-sky_top_color = Color(0.654902, 0.811765, 0.611765, 1)
+sky_top_color = Color(0.458824, 0.784314, 0.835294, 1)
 sky_horizon_color = Color(0.223529, 0.482353, 0.521569, 1)
+sky_curve = 1.11964
 ground_bottom_color = Color(0.223529, 0.482353, 0.521569, 1)
 ground_horizon_color = Color(0.223529, 0.482353, 0.521569, 1)
 
-[sub_resource type="Sky" id="Sky_u3gc0"]
+[sub_resource type="Sky" id="Sky_4eou2"]
 sky_material = SubResource("ProceduralSkyMaterial_6g4lh")
 
 [sub_resource type="Environment" id="Environment_kuwsq"]
 background_mode = 2
 background_color = Color(0.698039, 0.698039, 0.768627, 1)
-sky = SubResource("Sky_u3gc0")
+sky = SubResource("Sky_4eou2")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
@@ -34,7 +32,13 @@ fog_light_color = Color(1, 0, 0, 1)
 fog_density = 0.0
 fog_sky_affect = 0.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_wxmn3"]
+
 [node name="lvl1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kuwsq")
+script = ExtResource("6_se8w7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.466877, -0.449679, 0.761456, -0.261401, 0.752407, 0.60461, -0.844805, -0.481324, 0.233735, 0.562901, 7.71882, 9.71669)
@@ -48,6 +52,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.78968, 1.99991, -6.16256)
 [node name="Camera" parent="." instance=ExtResource("1_n5hc6")]
 target = NodePath("../Dog")
 
+[node name="InGameUI" parent="." instance=ExtResource("4_tresk")]
+
+[node name="Sheep" parent="." instance=ExtResource("4_s21ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.66095, 2, -2.38058)
+player = NodePath("../Dog")
+
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 3.48787e-16, 1, -4.37114e-08, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -0.817112, -0.775648, 1.14628)
 mesh_library = ExtResource("1_dtmn6")
@@ -59,23 +69,7 @@ metadata/_editor_floor_ = Vector3(1, 0, 0)
 
 [node name="Goal" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24034, 59.7981)
-script = ExtResource("4_i50jg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -0.625423, 0, 0.184898)
 shape = SubResource("SphereShape3D_wxmn3")
-
-[node name="DeathPlane" parent="." instance=ExtResource("4_bc3dx")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_kuwsq")
-script = ExtResource("6_se8w7")
-
-[node name="Node" type="Node" parent="."]
-
-[node name="Sheep" parent="Node" instance=ExtResource("4_s21ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.66095, 2, -2.38058)
-player = NodePath("../../Dog")
-
-[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
-[connection signal="body_exited" from="Goal" to="Goal" method="_on_body_exited"]
