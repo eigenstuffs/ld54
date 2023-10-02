@@ -6,3 +6,4 @@ func _on_body_entered(body):
 		get_parent().get_node("WorldEnvironment").red_flare()
 	elif body is Dog:
 		get_tree().reload_current_scene()
+	$AudioStreamPlayer.play()

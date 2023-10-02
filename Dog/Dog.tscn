@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwbecuthiqcsw"]
+[gd_scene load_steps=10 format=3 uid="uid://dwbecuthiqcsw"]
 
 [ext_resource type="Script" path="res://Dog/Dog.gd" id="1_4wscr"]
 [ext_resource type="Script" path="res://Dog/Bark.gd" id="2_xhr5x"]
 [ext_resource type="Script" path="res://Dog/Hitbox.gd" id="3_udmv1"]
+[ext_resource type="AudioStream" uid="uid://gwx6idaguarp" path="res://Sound/BR_LD54_SHEEP_SFX_bark_01.wav" id="4_s0od7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g3k0"]
 albedo_color = Color(1, 0.772549, 0.196078, 1)
@@ -45,3 +46,6 @@ script = ExtResource("3_udmv1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("BoxShape3D_vf3q7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_s0od7")
