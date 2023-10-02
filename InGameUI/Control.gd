@@ -9,9 +9,9 @@ extends Control
 @onready var timerLabel: Label = $Labels/Timer
 @onready var colorRect: ColorRect = $PauseMenu
 @onready var centerContainer: CenterContainer = $PauseMenu/CenterContainer
-@onready var pauseButton: Button = $Pause
-@onready var quitButton: Button = $PauseMenu/CenterContainer/VBoxContainer/Quit
-@onready var resumeButton: Button = $PauseMenu/CenterContainer/VBoxContainer/Resume
+@onready var pauseButton: TextureButton = $Pause
+@onready var quitButton: TextureButton = $PauseMenu/CenterContainer/VBoxContainer/Quit
+@onready var resumeButton: TextureButton = $PauseMenu/CenterContainer/VBoxContainer/Resume
 
 # Timer variables
 var startTime: float

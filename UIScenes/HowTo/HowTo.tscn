@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://u3ypm88eckwx"]
+[gd_scene load_steps=5 format=3 uid="uid://u3ypm88eckwx"]
 
 [ext_resource type="Texture2D" uid="uid://b2qblfoxhwu0" path="res://UI Assets/how2play.png" id="1_6wy5d"]
 [ext_resource type="Script" path="res://UIScenes/HowTo/HowTo.gd" id="1_rxsav"]
+[ext_resource type="Texture2D" uid="uid://em1w7a78ink0" path="res://UI Assets/back_idle.png" id="3_jpnhc"]
+[ext_resource type="Texture2D" uid="uid://wk8fhgp8qjwg" path="res://UI Assets/back_hover.png" id="4_nxgl4"]
 
 [node name="HowTo" type="Control"]
 layout_mode = 3
@@ -27,12 +29,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_6wy5d")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 560.0
-offset_right = 96.0
-offset_bottom = 624.0
-text = "Back"
+[node name="Button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.039
+anchor_top = 0.79
+anchor_right = 0.106
+anchor_bottom = 0.909
+offset_left = 0.0719991
+offset_top = 0.0799861
+offset_right = 25.888
+offset_bottom = 25.968
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("3_jpnhc")
+texture_pressed = ExtResource("4_nxgl4")
+texture_hover = ExtResource("4_nxgl4")
+texture_focused = ExtResource("4_nxgl4")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
