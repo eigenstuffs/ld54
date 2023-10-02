@@ -8,7 +8,7 @@ func _process(delta):
 	for i in get_overlapping_bodies():
 		if i is Sheep:
 			num_sheep += 1
-	if num_sheep >= sheep_count:
+	if num_sheep >= sheep_count and sheep_count != 0:
 		print("done")
 		LeaderboardBackend.emit_signal("stop_timer")
 	num_sheep = 0
