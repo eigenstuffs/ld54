@@ -122,8 +122,11 @@ func _on_hurtbox_area_entered(area):
 #		print("stomped")
 #		switch_state(states.STOMPED)
 
-func collider_check() -> bool:
-	return !$Raycasts/RayCast3D.is_colliding()
+func is_safe() -> bool:
+	for i in $Rays.get_children():
+		if !i.is_colliding():
+			return false
+	return true
 
 
 func _on_front_detection_body_entered(body):
