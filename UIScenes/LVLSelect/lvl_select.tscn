@@ -59,6 +59,8 @@ grow_vertical = 2
 texture = ExtResource("4_g2cgd")
 
 [node name="lvl1" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 416.0
 offset_top = 304.0
@@ -67,6 +69,8 @@ offset_bottom = 404.0
 text = "1"
 
 [node name="lvl2" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 528.0
 offset_top = 304.0
@@ -75,6 +79,8 @@ offset_bottom = 404.0
 text = "2"
 
 [node name="lvl3" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 640.0
 offset_top = 304.0
@@ -83,6 +89,8 @@ offset_bottom = 404.0
 text = "3"
 
 [node name="lvl4" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 416.0
 offset_top = 416.0
@@ -91,6 +99,8 @@ offset_bottom = 516.0
 text = "4"
 
 [node name="lvl5" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 528.0
 offset_top = 416.0
