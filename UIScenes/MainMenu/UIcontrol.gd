@@ -7,8 +7,8 @@ func _ready():
 
 func _on_play_button_pressed():
 	LeaderboardBackend.can_move = true
-	get_parent().get_node("InGameUI").show()
-	queue_free()
+	get_parent().get_node("InGameUI").get_node("Control").init()
+	hide()
 #	get_tree().change_scene_to_file("res://Levels/lvl1/lvl1.tscn")
 
 func _on_settings_button_pressed():
