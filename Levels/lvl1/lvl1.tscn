@@ -77,6 +77,3 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.625423, 0, 0.184898)
 shape = SubResource("SphereShape3D_wxmn3")
 
 [node name="DeathPlane" parent="." instance=ExtResource("7_j8jbv")]
-
-[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
-[connection signal="body_exited" from="Goal" to="Goal" method="_on_body_exited"]

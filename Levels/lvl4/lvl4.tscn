@@ -118,6 +118,3 @@ script = ExtResource("7_cqjma")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -0.625423, 0, 0.184898)
 shape = SubResource("SphereShape3D_a1g4s")
-
-[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
-[connection signal="body_exited" from="Goal" to="Goal" method="_on_body_exited"]
