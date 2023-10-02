@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmnxvrxq82xpd"]
+[gd_scene load_steps=11 format=3 uid="uid://bmnxvrxq82xpd"]
 
 [ext_resource type="MeshLibrary" uid="uid://1t8a35xm7aj3" path="res://MeshLibary/mesh_colliders.tres" id="1_dtmn6"]
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="1_n5hc6"]
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="2_3ocu1"]
-[ext_resource type="PackedScene" path="res://test/death_plane.tscn" id="4_bc3dx"]
 [ext_resource type="Script" path="res://Levels/lvl1/Goal.gd" id="4_i50jg"]
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="4_s21ii"]
 [ext_resource type="Script" path="res://Levels/lvl2/WorldEnvironmentEffects.gd" id="6_se8w7"]
@@ -64,8 +63,6 @@ script = ExtResource("4_i50jg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -0.625423, 0, 0.184898)
 shape = SubResource("SphereShape3D_wxmn3")
-
-[node name="DeathPlane" parent="." instance=ExtResource("4_bc3dx")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kuwsq")

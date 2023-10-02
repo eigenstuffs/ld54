@@ -35,6 +35,7 @@ offset_top = 0.127985
 offset_right = -0.568006
 offset_bottom = 0.0479608
 grow_vertical = 0
+scale = Vector2(0.75, 0.75)
 size_flags_horizontal = 0
 texture_normal = ExtResource("2_ukmqe")
 texture_pressed = ExtResource("3_rqggu")

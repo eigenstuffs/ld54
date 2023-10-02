@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcgso4vo7nkjw"]
+[gd_scene load_steps=4 format=3 uid="uid://bcgso4vo7nkjw"]
 
 [ext_resource type="Script" path="res://UIScenes/Credits/credits_scene.gd" id="1_srw87"]
+[ext_resource type="Texture2D" uid="uid://em1w7a78ink0" path="res://UI Assets/back_idle.png" id="2_b58pt"]
+[ext_resource type="Texture2D" uid="uid://wk8fhgp8qjwg" path="res://UI Assets/back_hover.png" id="3_jgja0"]
 
 [node name="CreditsScene" type="Control"]
 layout_mode = 3
@@ -59,7 +61,7 @@ Kenzie MacDougal
 Ming Zhu
 Ray Hsiao"
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.039
@@ -71,6 +73,10 @@ offset_top = 0.127985
 offset_right = -0.568006
 offset_bottom = 0.0479608
 grow_vertical = 0
-text = "Back"
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("2_b58pt")
+texture_pressed = ExtResource("3_jgja0")
+texture_hover = ExtResource("3_jgja0")
+texture_focused = ExtResource("3_jgja0")
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
