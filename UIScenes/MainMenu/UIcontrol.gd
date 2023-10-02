@@ -11,16 +11,6 @@ func _on_play_button_pressed():
 	hide()
 #	get_tree().change_scene_to_file("res://Levels/lvl1/lvl1.tscn")
 
-func _on_settings_button_pressed():
-#	get_tree().change_scene_to_file("res://UIScenes/SettingsMenu/settings_menu.tscn")
-	$CenterContainer/SettingsButton.release_focus()
-	$CenterContainer.hide()
-	$SettingsMenu.show()
-	await $SettingsMenu.back
-	$CenterContainer.show()
-	$SettingsMenu.hide()
-	$CenterContainer/SettingsButton.grab_focus()
-
 func _on_credits_button_pressed():
 #	get_tree().change_scene_to_file("res://UIScenes/Credits/credits_scene.tscn")
 	$CenterContainer/CreditsButton.release_focus()
