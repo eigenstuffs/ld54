@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1pqijytxg0wu"]
+[gd_scene load_steps=12 format=3 uid="uid://1pqijytxg0wu"]
 
 [ext_resource type="MeshLibrary" uid="uid://jduqkuobtqk7" path="res://MeshLibary/collider_mesh_2.tres" id="1_mpsq2"]
 [ext_resource type="Script" path="res://Levels/lvl2/WorldEnvironmentEffects.gd" id="1_ryqr5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="3_8xin6"]
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="5_rgsoc"]
 [ext_resource type="PackedScene" uid="uid://csqoc1mqompl8" path="res://death_plane.tscn" id="6_wdsdq"]
+[ext_resource type="Script" path="res://Levels/lvl1/Goal.gd" id="7_cqjma"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pk52h"]
 sky_top_color = Color(0.458824, 0.784314, 0.835294, 1)
@@ -31,6 +32,8 @@ fog_enabled = true
 fog_light_color = Color(1, 0, 0, 1)
 fog_density = 0.0
 fog_sky_affect = 0.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a1g4s"]
 
 [node name="lvl4" type="Node3D"]
 
@@ -107,3 +110,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3856, 2, -24.3728)
 player = NodePath("../Dog")
 
 [node name="DeathPlane" parent="." instance=ExtResource("6_wdsdq")]
+
+[node name="Goal" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.3187, 2.24034, -22.3788)
+script = ExtResource("7_cqjma")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -0.625423, 0, 0.184898)
+shape = SubResource("SphereShape3D_a1g4s")
+
+[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
+[connection signal="body_exited" from="Goal" to="Goal" method="_on_body_exited"]
