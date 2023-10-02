@@ -2,7 +2,7 @@ extends Control
 
 var isShowing = false
 
-@onready var audio : NodePath
+@export var audio : NodePath
 
 func _ready():
 	$CenterContainer/PlayButton.grab_focus()

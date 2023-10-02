@@ -195,6 +195,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_ae2ov")
+audio = NodePath("../../../AudioStreamPlayer")
 
 [node name="CenterContainer" type="VBoxContainer" parent="Level/CanvasLayer/MainMenu"]
 layout_mode = 1
