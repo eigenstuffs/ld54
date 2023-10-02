@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://diugumuikudpq"]
+[gd_scene load_steps=4 format=3 uid="uid://diugumuikudpq"]
 
 [ext_resource type="Script" path="res://UIScenes/LVLSelect/lvl_select.gd" id="1_vfw1f"]
+[ext_resource type="Texture2D" uid="uid://em1w7a78ink0" path="res://UI Assets/back_idle.png" id="2_ukmqe"]
+[ext_resource type="Texture2D" uid="uid://wk8fhgp8qjwg" path="res://UI Assets/back_hover.png" id="3_rqggu"]
 
 [node name="lvlSelect" type="Control"]
 layout_mode = 3
@@ -21,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.729412, 0.764706, 0.898039, 1)
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.039
@@ -34,7 +36,10 @@ offset_right = -0.568006
 offset_bottom = 0.0479608
 grow_vertical = 0
 size_flags_horizontal = 0
-text = "Back"
+texture_normal = ExtResource("2_ukmqe")
+texture_pressed = ExtResource("3_rqggu")
+texture_hover = ExtResource("3_rqggu")
+texture_focused = ExtResource("3_rqggu")
 
 [node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 1

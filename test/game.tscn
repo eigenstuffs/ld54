@@ -194,7 +194,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("4_ae2ov")
+
+[node name="SettingsButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu"]
+layout_mode = 2
+anchor_left = 0.899
+anchor_top = 0.839
+anchor_right = 0.899
+anchor_bottom = 0.839
+offset_left = -41.6481
+offset_top = -38.672
+offset_right = 68.3519
+offset_bottom = 64.328
+scale = Vector2(0.75, 0.75)
+toggle_mode = true
+texture_normal = ExtResource("13_hdxfg")
+texture_pressed = ExtResource("14_tdmtr")
 
 [node name="CenterContainer" type="VBoxContainer" parent="Level/CanvasLayer/MainMenu"]
 layout_mode = 1
@@ -203,13 +220,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -204.0
-offset_right = 188.0
-offset_bottom = 327.0
+offset_left = -117.0
+offset_top = -239.0
+offset_right = 183.0
+offset_bottom = 399.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
+alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
 layout_mode = 2
@@ -231,12 +249,6 @@ texture_normal = ExtResource("9_dwjbq")
 texture_pressed = ExtResource("10_1cttl")
 texture_hover = ExtResource("10_1cttl")
 texture_focused = ExtResource("10_1cttl")
-
-[node name="SettingsButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("13_hdxfg")
-texture_pressed = ExtResource("14_tdmtr")
 
 [node name="CreditsButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
 layout_mode = 2
@@ -294,10 +306,10 @@ libraries = {
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Retry" to="Level/CanvasLayer/InGameUI/Control" method="_on_retry_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Quit" to="Level/CanvasLayer/InGameUI/Control" method="_on_quit_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/Pause" to="Level/CanvasLayer/InGameUI/Control" method="_on_pause_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/MainMenu/SettingsButton" to="Level/CanvasLayer/MainMenu" method="_on_settings_button_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/PlayButton" to="Level/CanvasLayer/MainMenu" method="_on_play_button_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/How2Button" to="Level/CanvasLayer/MainMenu" method="_on_how_2_button_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/LvlSelect" to="Level/CanvasLayer/MainMenu" method="_on_lvl_select_pressed" flags=18]
-[connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/SettingsButton" to="Level/CanvasLayer/MainMenu" method="_on_settings_button_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/CreditsButton" to="Level/CanvasLayer/MainMenu" method="_on_credits_button_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/QuitButton" to="Level/CanvasLayer/MainMenu" method="_on_quit_button_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/MainMenu/lvlSelect/PlayButton2" to="Level/CanvasLayer/MainMenu" method="_on_play_button_pressed" flags=18]

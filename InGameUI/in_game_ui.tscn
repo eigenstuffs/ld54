@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv7dltqbb6248"]
+[gd_scene load_steps=6 format=3 uid="uid://bv7dltqbb6248"]
 
 [ext_resource type="Script" path="res://InGameUI/Control.gd" id="1_xhoik"]
+[ext_resource type="Texture2D" uid="uid://0cj8tjdppofj" path="res://UI Assets/start_idle.png" id="2_0urhe"]
+[ext_resource type="Texture2D" uid="uid://b4vc2mydsx5se" path="res://UI Assets/start_hover.png" id="3_c5h0o"]
+[ext_resource type="Texture2D" uid="uid://c427t26qu01cg" path="res://UI Assets/quit_idle.png" id="4_o1sih"]
+[ext_resource type="Texture2D" uid="uid://76n3nrsenfwq" path="res://UI Assets/quit_hover.png" id="5_e1eco"]
 
 [node name="InGameUI" type="CanvasLayer"]
 
@@ -41,20 +45,19 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Resume" type="Button" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
+[node name="Resume" type="TextureButton" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Resume"
+texture_normal = ExtResource("2_0urhe")
+texture_pressed = ExtResource("3_c5h0o")
+texture_hover = ExtResource("3_c5h0o")
+texture_focused = ExtResource("3_c5h0o")
 
-[node name="Retry" type="Button" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
+[node name="Quit" type="TextureButton" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Retry"
-
-[node name="Quit" type="Button" parent="Control/PauseMenu/CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Quit"
+texture_normal = ExtResource("4_o1sih")
+texture_pressed = ExtResource("5_e1eco")
+texture_hover = ExtResource("5_e1eco")
+texture_focused = ExtResource("5_e1eco")
 
 [node name="Pause" type="Button" parent="Control"]
 layout_mode = 1
@@ -93,6 +96,5 @@ offset_right = 1144.0
 offset_bottom = 631.0
 
 [connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Control" method="_on_resume_pressed"]
-[connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/Retry" to="Control" method="_on_retry_pressed"]
 [connection signal="pressed" from="Control/PauseMenu/CenterContainer/VBoxContainer/Quit" to="Control" method="_on_quit_pressed"]
 [connection signal="pressed" from="Control/Pause" to="Control" method="_on_pause_pressed"]
