@@ -9,7 +9,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7lfgw"]
 
-[node name="Sheep" type="CharacterBody3D"]
+[node name="Sheep" type="CharacterBody3D" groups=["Sheep"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_u6due")

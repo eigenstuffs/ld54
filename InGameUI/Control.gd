@@ -18,9 +18,14 @@ var pausedTime: float
 var isPaused: bool = false
 var time_passed : float = 0.0
 
+func init():
+	$Pause.show()
+	$Labels.show()
+
 func _process(delta):
 	# Check for the number of objects with the "Sheep" tag
 	var sheepCount = get_tree().get_nodes_in_group("Sheep").size()
+	print(sheepCount)
 	sheepCounterLabel.text = str(sheepCount)
 
 	# Update the timer if not paused
@@ -32,7 +37,7 @@ func update_timer_label(delta):
 	var elapsedTime = currentTime - startTime - pausedTime
 	var minutes = int(elapsedTime / 60.0)
 	var seconds = int(int(elapsedTime) % 60)
-	if !isPaused:
+	if !isPaused and LeaderboardBackend.can_move:
 		time_passed += delta
 		timerLabel.text = "%s.%03d" % [int(time_passed), int((time_passed - int(time_passed)) * 1000)] + "s"
 
@@ -59,7 +64,7 @@ func _on_retry_pressed():
 
 func _on_quit_pressed():
 	emit_signal("quit_button_pressed")
-	get_tree().change_scene_to_file("res://UIScenes/MainMenu/UIcontrol.tscn")
+	get_tree().reload_current_scene()
 
 func _on_resume_pressed():
 	# Resume the game
