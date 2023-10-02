@@ -304,7 +304,7 @@ bones/464/position = Vector3(-0.0313, 0.336224, 0.213602)
 bones/464/rotation = Quaternion(-0.859832, 1.29123e-08, 2.03878e-09, 0.510577)
 
 [node name="head_2" parent="rig/Skeleton3D" index="0"]
-transform = Transform3D(0.174536, 1.87521e-07, -4.3196e-08, -1.86883e-07, 0.174518, 0.00251519, 4.58974e-08, -0.00251556, 0.174517, 5.76349e-09, 0.406842, 0.0830381)
+transform = Transform3D(0.174536, 1.87521e-07, -4.3196e-08, -1.86883e-07, 0.174518, 0.00251519, 4.58974e-08, -0.00251556, 0.174517, 5.76348e-09, 0.406842, 0.083038)
 bone_idx = 246
 
 [node name="head_2" parent="rig/Skeleton3D/head_2" index="0"]
@@ -316,7 +316,7 @@ surface_material_override/3 = ExtResource("5_gje8t")
 surface_material_override/4 = ExtResource("6_efw0y")
 
 [node name="eyelid" parent="rig/Skeleton3D" index="1"]
-transform = Transform3D(0.0146699, 1.61725e-08, 2.22546e-10, -1.57077e-08, 0.0141971, 0.00369437, 3.85771e-09, -0.00369439, 0.014197, -1.35494e-08, 0.392934, 0.0998522)
+transform = Transform3D(0.0146699, 1.61725e-08, 2.22546e-10, -1.57077e-08, 0.0141971, 0.00369438, 3.85771e-09, -0.00369439, 0.014197, -1.35494e-08, 0.392934, 0.0998522)
 visible = false
 bone_idx = 247
 

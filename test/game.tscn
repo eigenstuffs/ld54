@@ -1,13 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg0euhf0w417k"]
+[gd_scene load_steps=24 format=3 uid="uid://dg0euhf0w417k"]
 
 [ext_resource type="Script" path="res://test/Level.gd" id="1_1m3dt"]
 [ext_resource type="PackedScene" uid="uid://bmnxvrxq82xpd" path="res://Levels/lvl1/lvl1.tscn" id="1_f3cbf"]
-[ext_resource type="PackedScene" uid="uid://cq6t4jivd2f0g" path="res://UIScenes/MainMenu/UIcontrol.tscn" id="2_r4nkh"]
+[ext_resource type="Script" path="res://InGameUI/Control.gd" id="3_cn6co"]
 [ext_resource type="PackedScene" uid="uid://bcgso4vo7nkjw" path="res://UIScenes/Credits/credits_scene.tscn" id="3_dgbcl"]
+[ext_resource type="Script" path="res://UIScenes/MainMenu/UIcontrol.gd" id="4_ae2ov"]
 [ext_resource type="PackedScene" uid="uid://diugumuikudpq" path="res://UIScenes/LVLSelect/lvl_select.tscn" id="4_h8rrm"]
 [ext_resource type="PackedScene" uid="uid://4co4oba1mb8v" path="res://UIScenes/SettingsMenu/settings_menu.tscn" id="5_h1u70"]
+[ext_resource type="Texture2D" uid="uid://0cj8tjdppofj" path="res://UI Assets/start_idle.png" id="5_nyl0i"]
+[ext_resource type="Texture2D" uid="uid://b4vc2mydsx5se" path="res://UI Assets/start_hover.png" id="6_c5bla"]
 [ext_resource type="PackedScene" uid="uid://u3ypm88eckwx" path="res://UIScenes/HowTo/HowTo.tscn" id="6_ygoeb"]
-[ext_resource type="PackedScene" uid="uid://bv7dltqbb6248" path="res://InGameUI/in_game_ui.tscn" id="8_wtuyi"]
+[ext_resource type="Texture2D" uid="uid://dsttj1nlafqa5" path="res://UI Assets/how2_idle.png" id="7_egwsj"]
+[ext_resource type="Texture2D" uid="uid://cb4yvu88ymy5h" path="res://UI Assets/how2_hover.png" id="8_81q5y"]
+[ext_resource type="Texture2D" uid="uid://cqsfs82kbegbg" path="res://UI Assets/lvls_idle.png" id="9_dwjbq"]
+[ext_resource type="Texture2D" uid="uid://cdk35vfkbljc3" path="res://UI Assets/lvls_hover.png" id="10_1cttl"]
+[ext_resource type="Texture2D" uid="uid://cfqfy454ifxdc" path="res://UI Assets/settings_idle.png" id="11_wr5ae"]
+[ext_resource type="Texture2D" uid="uid://bdvb4o6i40yr3" path="res://UI Assets/settings_hover.png" id="12_vbjho"]
+[ext_resource type="Texture2D" uid="uid://cajtlvxwpr103" path="res://UI Assets/credits_idle.png" id="13_jb18n"]
+[ext_resource type="Texture2D" uid="uid://b1xerv75jfsdw" path="res://UI Assets/credits_hover.png" id="14_7mwjb"]
+[ext_resource type="Texture2D" uid="uid://c427t26qu01cg" path="res://UI Assets/quit_idle.png" id="15_wl10x"]
+[ext_resource type="Texture2D" uid="uid://76n3nrsenfwq" path="res://UI Assets/quit_hover.png" id="16_uc5a3"]
 
 [sub_resource type="Animation" id="Animation_3fqpw"]
 resource_name = "Fade"
@@ -23,21 +35,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-1232, -608), Vector2(192, -560)]
-}
-
-[sub_resource type="Animation" id="Animation_2yum5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1232, -608)]
 }
 
 [sub_resource type="Animation" id="Animation_u05n5"]
@@ -59,8 +56,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gerod"]
 _data = {
 "Fade": SubResource("Animation_3fqpw"),
-"Fade_2": SubResource("Animation_u05n5"),
-"RESET": SubResource("Animation_2yum5")
+"Fade_2": SubResource("Animation_u05n5")
 }
 
 [node name="Game" type="Node"]
@@ -74,22 +70,175 @@ script = ExtResource("1_1m3dt")
 
 [node name="ColorRect" type="ColorRect" parent="Level/CanvasLayer"]
 anchors_preset = -1
-anchor_left = -0.760417
+anchor_left = -0.764758
 anchor_top = -0.598765
-anchor_right = 0.369792
-anchor_bottom = 1.3071
+anchor_right = -0.764758
+anchor_bottom = -0.246914
 offset_left = -356.0
 offset_top = -220.0
-offset_right = -316.0
-offset_bottom = -180.0
+offset_right = 986.001
+offset_bottom = 1055.0
 rotation = 0.349066
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="InGameUI" parent="Level/CanvasLayer" instance=ExtResource("8_wtuyi")]
-visible = false
+[node name="InGameUI" type="CanvasLayer" parent="Level/CanvasLayer"]
 
-[node name="MainMenu" parent="Level/CanvasLayer" instance=ExtResource("2_r4nkh")]
+[node name="Control" type="Control" parent="Level/CanvasLayer/InGameUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_cn6co")
+
+[node name="PauseMenu" type="ColorRect" parent="Level/CanvasLayer/InGameUI/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.925
+anchor_bottom = 16.15
+offset_right = -4.57764e-05
+offset_bottom = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.694118, 0.760784, 0.921569, 0.447059)
+
+[node name="CenterContainer" type="CenterContainer" parent="Level/CanvasLayer/InGameUI/Control/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.446
+anchor_top = 0.322
+anchor_right = 0.554
+anchor_bottom = 0.678
+offset_left = 0.477989
+offset_top = -0.0120173
+offset_right = -0.478023
+offset_bottom = 0.0119787
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Resume" type="Button" parent="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="Retry" type="Button" parent="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Retry"
+
+[node name="Quit" type="Button" parent="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="Pause" type="Button" parent="Level/CanvasLayer/InGameUI/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 26.925
+anchor_top = 0.5
+anchor_right = 28.5
+anchor_bottom = 1.45
+offset_left = -4.57764e-05
+offset_top = -4.0
+offset_right = -7.62939e-05
+grow_horizontal = 0
+grow_vertical = 0
+text = "Pause"
+
+[node name="Labels" type="Control" parent="Level/CanvasLayer/InGameUI/Control"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SheepCounter" type="Label" parent="Level/CanvasLayer/InGameUI/Control/Labels"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Level" type="Label" parent="Level/CanvasLayer/InGameUI/Control/Labels"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Label" parent="Level/CanvasLayer/InGameUI/Control/Labels"]
+layout_mode = 0
+offset_left = 1104.0
+offset_top = 608.0
+offset_right = 1144.0
+offset_bottom = 631.0
+
+[node name="MainMenu" type="Control" parent="Level/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_ae2ov")
+
+[node name="CenterContainer" type="VBoxContainer" parent="Level/CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -204.0
+offset_right = 188.0
+offset_bottom = 327.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+
+[node name="PlayButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_nyl0i")
+texture_pressed = ExtResource("6_c5bla")
+texture_hover = ExtResource("6_c5bla")
+texture_focused = ExtResource("6_c5bla")
+
+[node name="How2Button" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_egwsj")
+texture_pressed = ExtResource("8_81q5y")
+texture_hover = ExtResource("8_81q5y")
+texture_focused = ExtResource("8_81q5y")
+
+[node name="LvlSelect" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_dwjbq")
+texture_pressed = ExtResource("10_1cttl")
+texture_hover = ExtResource("10_1cttl")
+texture_focused = ExtResource("10_1cttl")
+
+[node name="SettingsButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_wr5ae")
+texture_pressed = ExtResource("12_vbjho")
+texture_hover = ExtResource("12_vbjho")
+texture_focused = ExtResource("12_vbjho")
+
+[node name="CreditsButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_jb18n")
+texture_pressed = ExtResource("14_7mwjb")
+texture_hover = ExtResource("14_7mwjb")
+texture_focused = ExtResource("14_7mwjb")
+
+[node name="QuitButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("15_wl10x")
+texture_pressed = ExtResource("16_uc5a3")
+texture_hover = ExtResource("16_uc5a3")
+texture_focused = ExtResource("16_uc5a3")
 
 [node name="CreditsScene" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("3_dgbcl")]
 visible = false
@@ -98,6 +247,17 @@ layout_mode = 1
 [node name="lvlSelect" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("4_h8rrm")]
 visible = false
 layout_mode = 1
+
+[node name="PlayButton2" type="TextureButton" parent="Level/CanvasLayer/MainMenu/lvlSelect"]
+layout_mode = 2
+offset_left = 430.0
+offset_top = 461.0
+offset_right = 730.0
+offset_bottom = 564.0
+texture_normal = ExtResource("5_nyl0i")
+texture_pressed = ExtResource("6_c5bla")
+texture_hover = ExtResource("6_c5bla")
+texture_focused = ExtResource("6_c5bla")
 
 [node name="SettingsMenu" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("5_h1u70")]
 visible = false
@@ -112,3 +272,17 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_gerod")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Level/CanvasLayer/InGameUI/Control" method="_on_resume_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Retry" to="Level/CanvasLayer/InGameUI/Control" method="_on_retry_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Quit" to="Level/CanvasLayer/InGameUI/Control" method="_on_quit_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/Pause" to="Level/CanvasLayer/InGameUI/Control" method="_on_pause_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/PlayButton" to="Level/CanvasLayer/MainMenu" method="_on_play_button_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/How2Button" to="Level/CanvasLayer/MainMenu" method="_on_how_2_button_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/LvlSelect" to="Level/CanvasLayer/MainMenu" method="_on_lvl_select_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/SettingsButton" to="Level/CanvasLayer/MainMenu" method="_on_settings_button_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/CreditsButton" to="Level/CanvasLayer/MainMenu" method="_on_credits_button_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/QuitButton" to="Level/CanvasLayer/MainMenu" method="_on_quit_button_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/MainMenu/lvlSelect/PlayButton2" to="Level/CanvasLayer/MainMenu" method="_on_play_button_pressed" flags=18]
