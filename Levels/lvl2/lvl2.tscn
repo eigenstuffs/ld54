@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b61kcshmmwjal"]
+[gd_scene load_steps=10 format=3 uid="uid://b61kcshmmwjal"]
 
 [ext_resource type="Script" path="res://Levels/lvl2/WorldEnvironmentEffects.gd" id="1_tlpgm"]
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="2_nym07"]
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="3_s0xn6"]
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="5_mln28"]
+[ext_resource type="PackedScene" uid="uid://csqoc1mqompl8" path="res://death_plane.tscn" id="6_ib4ya"]
 [ext_resource type="MeshLibrary" uid="uid://jduqkuobtqk7" path="res://MeshLibary/collider_mesh_2.tres" id="6_jjoor"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vto7w"]
@@ -70,3 +71,5 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 metadata/_edit_group_ = true
+
+[node name="DeathPlane" parent="." instance=ExtResource("6_ib4ya")]

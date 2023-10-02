@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://DeathPlane.gd" id="1_hdg0s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4147y"]
-size = Vector3(100, 1, 100)
+size = Vector3(1000, 1, 1000)
 
 [node name="DeathPlane" type="Area3D"]
 script = ExtResource("1_hdg0s")

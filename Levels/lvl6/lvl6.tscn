@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvx2yywi18mgh"]
+[gd_scene load_steps=10 format=3 uid="uid://cvx2yywi18mgh"]
 
 [ext_resource type="Script" path="res://Levels/lvl2/WorldEnvironmentEffects.gd" id="1_fkw0t"]
 [ext_resource type="MeshLibrary" uid="uid://jduqkuobtqk7" path="res://MeshLibary/collider_mesh_2.tres" id="2_mt8kj"]
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="2_ybfnq"]
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="3_4nfrw"]
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="5_apqcq"]
+[ext_resource type="PackedScene" uid="uid://csqoc1mqompl8" path="res://death_plane.tscn" id="6_l5e4k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jvjiu"]
 sky_top_color = Color(0.458824, 0.784314, 0.835294, 1)
@@ -120,3 +121,5 @@ player = NodePath("../Dog")
 [node name="Sheep16" parent="." instance=ExtResource("5_apqcq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.073, 2, -36.6349)
 player = NodePath("../Dog")
+
+[node name="DeathPlane" parent="." instance=ExtResource("6_l5e4k")]
