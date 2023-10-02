@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dg0euhf0w417k"]
+[gd_scene load_steps=29 format=3 uid="uid://dg0euhf0w417k"]
 
 [ext_resource type="Script" path="res://test/Level.gd" id="1_1m3dt"]
 [ext_resource type="PackedScene" uid="uid://bmnxvrxq82xpd" path="res://Levels/lvl1/lvl1.tscn" id="1_f3cbf"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://u3ypm88eckwx" path="res://UIScenes/HowTo/HowTo.tscn" id="6_ygoeb"]
 [ext_resource type="Texture2D" uid="uid://dsttj1nlafqa5" path="res://UI Assets/how2_idle.png" id="7_egwsj"]
 [ext_resource type="Texture2D" uid="uid://cb4yvu88ymy5h" path="res://UI Assets/how2_hover.png" id="8_81q5y"]
+[ext_resource type="Texture2D" uid="uid://b8m77b4shlodj" path="res://UI Assets/playing.png" id="8_a35v2"]
+[ext_resource type="Texture2D" uid="uid://uq6ewmj2lc3y" path="res://UI Assets/paused.png" id="9_43k54"]
 [ext_resource type="Texture2D" uid="uid://cqsfs82kbegbg" path="res://UI Assets/lvls_idle.png" id="9_dwjbq"]
 [ext_resource type="Texture2D" uid="uid://cdk35vfkbljc3" path="res://UI Assets/lvls_hover.png" id="10_1cttl"]
 [ext_resource type="Texture2D" uid="uid://jac2euvj7jsh" path="res://UI Assets/unmuted.png" id="13_hdxfg"]
@@ -125,35 +127,38 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Resume" type="Button" parent="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer"]
+[node name="Resume" type="TextureButton" parent="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Resume"
+texture_normal = ExtResource("5_nyl0i")
+texture_pressed = ExtResource("6_c5bla")
+texture_hover = ExtResource("6_c5bla")
+texture_focused = ExtResource("6_c5bla")
 
-[node name="Retry" type="Button" parent="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer"]
+[node name="Quit" type="TextureButton" parent="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Retry"
+texture_normal = ExtResource("15_wl10x")
+texture_pressed = ExtResource("16_uc5a3")
+texture_hover = ExtResource("16_uc5a3")
+texture_focused = ExtResource("16_uc5a3")
 
-[node name="Quit" type="Button" parent="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Quit"
-
-[node name="Pause" type="Button" parent="Level/CanvasLayer/InGameUI/Control"]
+[node name="Pause" type="TextureButton" parent="Level/CanvasLayer/InGameUI/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 26.925
-anchor_top = 0.5
-anchor_right = 28.5
-anchor_bottom = 1.45
-offset_left = -4.57764e-05
-offset_top = -4.0
-offset_right = -7.62939e-05
+anchor_left = 26.325
+anchor_top = 0.525
+anchor_right = 28.256
+anchor_bottom = 2.494
+offset_left = -3.05176e-05
+offset_right = 25.76
+offset_bottom = 26.24
 grow_horizontal = 0
 grow_vertical = 0
-text = "Pause"
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("8_a35v2")
+texture_pressed = ExtResource("9_43k54")
+texture_hover = ExtResource("9_43k54")
+texture_focused = ExtResource("9_43k54")
 
 [node name="Labels" type="Control" parent="Level/CanvasLayer/InGameUI/Control"]
 visible = false
@@ -275,10 +280,15 @@ layout_mode = 1
 
 [node name="PlayButton2" type="TextureButton" parent="Level/CanvasLayer/MainMenu/lvlSelect"]
 layout_mode = 2
-offset_left = 430.0
-offset_top = 461.0
-offset_right = 730.0
-offset_bottom = 564.0
+anchor_left = 0.399
+anchor_top = 0.691
+anchor_right = 0.595
+anchor_bottom = 0.811
+offset_left = 0.352009
+offset_top = 0.231971
+offset_right = 74.56
+offset_bottom = 25.472
+scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("5_nyl0i")
 texture_pressed = ExtResource("6_c5bla")
 texture_hover = ExtResource("6_c5bla")
@@ -304,10 +314,9 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -20.0
 
-[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Level/CanvasLayer/InGameUI/Control" method="_on_resume_pressed" flags=18]
-[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Retry" to="Level/CanvasLayer/InGameUI/Control" method="_on_retry_pressed" flags=18]
-[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Quit" to="Level/CanvasLayer/InGameUI/Control" method="_on_quit_pressed" flags=18]
-[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/Pause" to="Level/CanvasLayer/InGameUI/Control" method="_on_pause_pressed" flags=18]
+[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Level/CanvasLayer/InGameUI/Control" method="_on_resume_pressed"]
+[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Quit" to="Level/CanvasLayer/InGameUI/Control" method="_on_quit_pressed"]
+[connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/Pause" to="Level/CanvasLayer/InGameUI/Control" method="_on_pause_pressed"]
 [connection signal="pressed" from="Level/CanvasLayer/MainMenu/SettingsButton" to="Level/CanvasLayer/MainMenu" method="_on_settings_button_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/PlayButton" to="Level/CanvasLayer/MainMenu" method="_on_play_button_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/MainMenu/CenterContainer/How2Button" to="Level/CanvasLayer/MainMenu" method="_on_how_2_button_pressed" flags=18]
