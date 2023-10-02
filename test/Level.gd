@@ -5,10 +5,11 @@ const level_2 = preload("res://Levels/lvl2/lvl2.tscn")
 const level_3 = preload("res://Levels/lvl3/lvl_3.tscn")
 const level_4 = preload("res://Levels/lvl4/lvl4.tscn")
 const level_5 = preload("res://Levels/lvl5/lvl_5.tscn")
+const level_6 = preload("res://Levels/lvl6/lvl6.tscn")
 
 var current_level = 0
 
-@onready var levels = [level_1, level_2, level_3, level_4, level_5]
+@onready var levels = [level_1, level_2, level_3, level_4, level_5, level_6]
 
 func change(level : int):
 	current_level = level
