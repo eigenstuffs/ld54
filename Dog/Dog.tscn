@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwbecuthiqcsw"]
+[gd_scene load_steps=10 format=3 uid="uid://dwbecuthiqcsw"]
 
 [ext_resource type="Script" path="res://Dog/Dog.gd" id="1_4wscr"]
 [ext_resource type="Script" path="res://Dog/Bark.gd" id="2_xhr5x"]
 [ext_resource type="Script" path="res://Dog/Hitbox.gd" id="3_udmv1"]
 [ext_resource type="AudioStream" uid="uid://gwx6idaguarp" path="res://Sound/BR_LD54_SHEEP_SFX_bark_01.wav" id="4_s0od7"]
-[ext_resource type="PackedScene" uid="uid://cic4a6p31jg8b" path="res://models/dog model.tscn" id="5_0xq68"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g3k0"]
 albedo_color = Color(1, 0.772549, 0.196078, 1)
@@ -23,12 +22,9 @@ height = 0.979673
 size = Vector3(1.1, 1, 1.1)
 
 [node name="Dog" type="CharacterBody3D"]
-collision_layer = 5
-collision_mask = 7
 script = ExtResource("1_4wscr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("BoxMesh_3l1xe")
 
 [node name="Bark" type="Area3D" parent="."]
@@ -53,6 +49,3 @@ shape = SubResource("BoxShape3D_vf3q7")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_s0od7")
-
-[node name="dog" parent="." instance=ExtResource("5_0xq68")]
-transform = Transform3D(2.415, 0, 0, 0, 2.415, 0, 0, 0, 2.415, 0, -0.482125, 0)
