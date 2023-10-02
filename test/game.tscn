@@ -197,6 +197,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("4_ae2ov")
+audio = NodePath("../../../AudioStreamPlayer")
 
 [node name="SettingsButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu"]
 layout_mode = 2
@@ -301,6 +302,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
 
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Level/CanvasLayer/InGameUI/Control" method="_on_resume_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Retry" to="Level/CanvasLayer/InGameUI/Control" method="_on_retry_pressed" flags=18]

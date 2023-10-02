@@ -2,6 +2,8 @@ extends Control
 
 var isShowing = false
 
+@export var audio : NodePath
+
 func _ready():
 	$CenterContainer/PlayButton.grab_focus()
 
@@ -42,3 +44,8 @@ func _on_how_2_button_pressed():
 	$CenterContainer.show()
 	$HowTo.hide()
 	$CenterContainer/How2Button.grab_focus()
+
+func _on_settings_button_pressed():
+	if !$CenterContainer/SettingsButton.pressed: get_node(audio).volume_db = -100
+	else: get_node(audio).volume_db = -20
+	
