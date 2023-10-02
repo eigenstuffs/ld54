@@ -18,6 +18,9 @@ var pausedTime: float
 var isPaused: bool = false
 var time_passed : float = 0.0
 
+func _ready():
+	LeaderboardBackend.connect("stop_timer", stop_timer)
+
 func init():
 	$Pause.show()
 	$Labels.show()
@@ -76,3 +79,5 @@ func _on_resume_pressed():
 	colorRect.visible = false
 	centerContainer.hide()
 	
+func stop_timer():
+	LeaderboardBackend.can_walk = false

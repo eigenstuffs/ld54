@@ -12,10 +12,9 @@ func _on_body_entered(body):
 		num_sheep += 1
 		if num_sheep >= sheepCount:
 			print("done")
+			LeaderboardBackend.emit_signal("stop_timer")
 		
 
 func _on_body_exited(body):
 	if body is Sheep:
 		num_sheep -= 1
-		if num_sheep >= sheepCount:
-			print("done")

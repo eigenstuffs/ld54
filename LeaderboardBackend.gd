@@ -1,7 +1,10 @@
 extends Node
 
+signal stop_timer
+
 var can_move : bool = false
 
+@onready var data_resource = preload("res://Data.tres")
 
 # entry.699247905 - Name
 # entry.1588699143 - Time
@@ -31,6 +34,7 @@ func http_get(_result, _response_code, _headers, _body, http):
 		var data = JSON.parse_string(_body.get_string_from_utf8())
 		print("Decoding complete")
 		print(data)
+		data_resource.data = data
 	
 
 
