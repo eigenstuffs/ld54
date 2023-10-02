@@ -4,7 +4,7 @@ signal retried
 signal nextlvl
 
 @onready var title = $CenterContainer/VBoxContainer/Title
-@onready var time : = $CenterContainer/VBoxContainer/TextureRect/Timer
+@onready var time : = $CenterContainer/VBoxContainer/Timer
 
 func initialize(total_play_time : float = 0.0, won : bool = true) -> void:
 #	var minutes : String = str(int(total_play_time / 60.0))
