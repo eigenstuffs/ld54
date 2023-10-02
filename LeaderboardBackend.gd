@@ -2,6 +2,7 @@ extends Node
 
 var can_move : bool = false
 
+signal stop_timer
 
 # entry.699247905 - Name
 # entry.1588699143 - Time

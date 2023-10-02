@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://1pqijytxg0wu"]
+[gd_scene load_steps=9 format=3 uid="uid://1pqijytxg0wu"]
 
 [ext_resource type="MeshLibrary" uid="uid://jduqkuobtqk7" path="res://MeshLibary/collider_mesh_2.tres" id="1_mpsq2"]
 [ext_resource type="Script" path="res://Levels/lvl2/WorldEnvironmentEffects.gd" id="1_ryqr5"]
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="2_piajn"]
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="3_8xin6"]
-[ext_resource type="PackedScene" uid="uid://bv7dltqbb6248" path="res://InGameUI/in_game_ui.tscn" id="4_8kgv1"]
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="5_rgsoc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pk52h"]
@@ -57,8 +56,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 
 [node name="Camera" parent="." instance=ExtResource("3_8xin6")]
 target = NodePath("../Dog")
-
-[node name="InGameUI" parent="." instance=ExtResource("4_8kgv1")]
 
 [node name="Sheep" parent="." instance=ExtResource("5_rgsoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5.193)

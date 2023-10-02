@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name Sheep
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 const SPEED = 5.0
 
