@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="1_easya"]
 [ext_resource type="MeshLibrary" uid="uid://1t8a35xm7aj3" path="res://MeshLibary/mesh_colliders.tres" id="1_iquyt"]
-[ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="2_1o6bj"]
+[ext_resource type="PackedScene" uid="uid://cjxrdfa4uhtwp" path="res://Camera/Camera.tscn" id="2_1o6bj"]
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="4_7a1cl"]
 [ext_resource type="PackedScene" uid="uid://csqoc1mqompl8" path="res://death_plane.tscn" id="5_jq2xk"]
 [ext_resource type="Script" path="res://Levels/lvl2/WorldEnvironmentEffects.gd" id="6_rtkne"]

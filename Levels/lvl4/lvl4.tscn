@@ -3,7 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://jduqkuobtqk7" path="res://MeshLibary/collider_mesh_2.tres" id="1_mpsq2"]
 [ext_resource type="Script" path="res://Levels/lvl2/WorldEnvironmentEffects.gd" id="1_ryqr5"]
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="2_piajn"]
-[ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="3_8xin6"]
+[ext_resource type="PackedScene" uid="uid://cjxrdfa4uhtwp" path="res://Camera/Camera.tscn" id="3_8xin6"]
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="5_rgsoc"]
 [ext_resource type="PackedScene" uid="uid://csqoc1mqompl8" path="res://death_plane.tscn" id="6_wdsdq"]
 [ext_resource type="Script" path="res://Levels/lvl1/Goal.gd" id="7_cqjma"]

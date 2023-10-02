@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlashtvgn52cr"]
+[gd_scene load_steps=2 format=3 uid="uid://cjxrdfa4uhtwp"]
 
-[ext_resource type="Script" path="res://Camera/CameraRef.gd" id="1_uww7f"]
+[ext_resource type="Script" path="res://Camera/CameraRef.gd" id="1_dtoan"]
 
 [node name="Camera" type="Node3D"]
-script = ExtResource("1_uww7f")
+script = ExtResource("1_dtoan")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707106, -0.707107, -0.5, 0.5, 70, 92.48, 70)
