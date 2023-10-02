@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://b2y6dp1gsfp45" path="res://Sound/BR_LD54_SHEEP_SFX_dying_02.wav" id="2_48nvs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4147y"]
-size = Vector3(1000, 1, 1000)
+size = Vector3(2000, 10, 2000)
 
 [node name="DeathPlane" type="Area3D"]
 script = ExtResource("1_hdg0s")
