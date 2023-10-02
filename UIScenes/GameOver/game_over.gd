@@ -3,8 +3,7 @@ extends Control
 signal retried
 signal nextlvl
 
-@onready var time : = $CenterContainer/VBoxContainer/Timer
-@onready var title : = $CenterContainer/VBoxContainer/Title
+@onready var time : = $CenterContainer/VBoxContainer/TextureRect/Timer
 
 func initialize(total_play_time : float = 0.0, won : bool = true) -> void:
 #	var minutes : String = str(int(total_play_time / 60.0))
@@ -13,21 +12,24 @@ func initialize(total_play_time : float = 0.0, won : bool = true) -> void:
 	print("showing game over")
 	show()
 	if won:
-		title.text = "Success!"
 		time.text = "Your time: " + str(snapped(total_play_time, 0.01))
 	else:
 		time.text = "Try again!"
-		title.text = "All your sheep fell off :("
 #	time.text = time_text
 	
-func _on_exit_pressed():
+func _on_quit_pressed():
 	get_tree().change_scene_to_file("res://test/game.tscn")
-	hide()
  
+<<<<<<< HEAD
 func _on_nextlvl_pressed():
 	get_tree().current_scene.get_node("Level").change(min(6, get_tree().current_scene.get_node("Level").current_level+2))
+=======
+func _on_next_pressed():
+	get_tree().current_scene.get_node("Level").change(min(6, get_tree().current_scene.get_node("Level").current_level+1))
+>>>>>>> 000dd4ae2549d081dbc30ab903538f94bbbd35d6
 	hide()
 
-func _on_retry_pressed():
+func _on_replay_pressed():
 	get_tree().current_scene.get_node("Level").change(get_tree().current_scene.get_node("Level").current_level)
 	hide()
+
