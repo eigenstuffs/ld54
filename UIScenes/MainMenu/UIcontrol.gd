@@ -2,9 +2,8 @@ extends Control
 
 var isShowing = false
 
-func _input(event):
-	if event is InputEventKey && $How2Play.visible:
-		$How2Play.hide()
+func _ready():
+	$CenterContainer/PlayButton.grab_focus()
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://Levels/lvl1/lvl1.tscn")
@@ -22,4 +21,4 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 func _on_how_2_button_pressed():
-	$How2Play.show()
+	pass

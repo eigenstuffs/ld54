@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cq6t4jivd2f0g"]
+[gd_scene load_steps=14 format=3 uid="uid://cq6t4jivd2f0g"]
 
 [ext_resource type="Script" path="res://UIScenes/MainMenu/UIcontrol.gd" id="1_ko035"]
 [ext_resource type="Texture2D" uid="uid://0cj8tjdppofj" path="res://UI Assets/start_idle.png" id="2_4wmy7"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://b1xerv75jfsdw" path="res://UI Assets/credits_hover.png" id="9_byie1"]
 [ext_resource type="Texture2D" uid="uid://c427t26qu01cg" path="res://UI Assets/quit_idle.png" id="10_y0rlk"]
 [ext_resource type="Texture2D" uid="uid://76n3nrsenfwq" path="res://UI Assets/quit_hover.png" id="11_ph6co"]
-[ext_resource type="Texture2D" uid="uid://b2qblfoxhwu0" path="res://UI Assets/how2play.png" id="14_hdey6"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -53,45 +52,42 @@ layout_mode = 2
 texture_normal = ExtResource("2_4wmy7")
 texture_pressed = ExtResource("3_yk8c7")
 texture_hover = ExtResource("3_yk8c7")
+texture_focused = ExtResource("3_yk8c7")
 
 [node name="How2Button" type="TextureButton" parent="CenterContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_g5k8h")
 texture_pressed = ExtResource("5_2ly7t")
 texture_hover = ExtResource("5_2ly7t")
+texture_focused = ExtResource("5_2ly7t")
 
 [node name="LvlSelect" type="TextureButton" parent="CenterContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_4olns")
 texture_pressed = ExtResource("7_he03j")
 texture_hover = ExtResource("7_he03j")
+texture_focused = ExtResource("7_he03j")
 
 [node name="SettingsButton" type="TextureButton" parent="CenterContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_ti65k")
 texture_pressed = ExtResource("5_ukmlc")
 texture_hover = ExtResource("5_ukmlc")
+texture_focused = ExtResource("5_ukmlc")
 
 [node name="CreditsButton" type="TextureButton" parent="CenterContainer"]
 layout_mode = 2
 texture_normal = ExtResource("8_yhk0e")
 texture_pressed = ExtResource("9_byie1")
 texture_hover = ExtResource("9_byie1")
+texture_focused = ExtResource("9_byie1")
 
 [node name="QuitButton" type="TextureButton" parent="CenterContainer"]
 layout_mode = 2
 texture_normal = ExtResource("10_y0rlk")
 texture_pressed = ExtResource("11_ph6co")
 texture_hover = ExtResource("11_ph6co")
-
-[node name="How2Play" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 312.0
-offset_top = 88.0
-offset_right = 831.0
-offset_bottom = 546.0
-texture = ExtResource("14_hdey6")
+texture_focused = ExtResource("11_ph6co")
 
 [connection signal="pressed" from="CenterContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/How2Button" to="." method="_on_how_2_button_pressed"]
