@@ -21,6 +21,7 @@ func initialize(total_play_time : float = 0.0, won : bool = true) -> void:
 	
 func _on_exit_pressed():
 	get_tree().change_scene_to_file("res://test/game.tscn")
+	hide()
  
 func _on_nextlvl_pressed():
 	get_tree().current_scene.get_node("Level").change(min(6, get_tree().current_scene.get_node("Level").current_level+1))
