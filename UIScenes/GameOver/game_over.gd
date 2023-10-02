@@ -4,12 +4,19 @@ signal retried
 signal nextlvl
 
 @onready var time : = $CenterContainer/VBoxContainer/Timer
+@onready var title : = $CenterContainer/VBoxContainer/Title
 
-func initialize(total_play_time : float) -> void:
+func initialize(total_play_time : float = 0.0, won : bool = true) -> void:
 #	var minutes : String = str(int(total_play_time / 60.0))
 #	var seconds : String = str(int(fmod(total_play_time, 60.0)))
 #	var time_text = "Total Time : %s m %s s" %[minutes,seconds]
-	time.text = "Your time: " + str(snapped(total_play_time, 0.01))
+	show()
+	if won:
+		title.text = "Success!"
+		time.text = "Your time: " + str(snapped(total_play_time, 0.01))
+	else:
+		time.text = "Try again!"
+		title.text = "All your sheep fell off :("
 #	time.text = time_text
 	
 func _on_exit_pressed():
