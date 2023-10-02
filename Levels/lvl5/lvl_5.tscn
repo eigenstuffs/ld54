@@ -1,15 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxx6yg6f1gw6o"]
+[gd_scene load_steps=10 format=3 uid="uid://dxx6yg6f1gw6o"]
 
 [ext_resource type="PackedScene" uid="uid://dwbecuthiqcsw" path="res://Dog/Dog.tscn" id="1_easya"]
 [ext_resource type="MeshLibrary" uid="uid://1t8a35xm7aj3" path="res://MeshLibary/mesh_colliders.tres" id="1_iquyt"]
 [ext_resource type="PackedScene" uid="uid://dlashtvgn52cr" path="res://Camera/Camera.tscn" id="2_1o6bj"]
 [ext_resource type="PackedScene" uid="uid://bv7dltqbb6248" path="res://InGameUI/in_game_ui.tscn" id="3_r4vky"]
 [ext_resource type="PackedScene" uid="uid://xar8o88nibr8" path="res://Sheep/Sheep.tscn" id="4_7a1cl"]
+[ext_resource type="Script" path="res://Levels/lvl2/WorldEnvironmentEffects.gd" id="6_rtkne"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g3lsq"]
+sky_top_color = Color(0.458824, 0.784314, 0.835294, 1)
+sky_horizon_color = Color(0.223529, 0.482353, 0.521569, 1)
+sky_curve = 1.11964
+ground_bottom_color = Color(0.223529, 0.482353, 0.521569, 1)
+ground_horizon_color = Color(0.223529, 0.482353, 0.521569, 1)
+
+[sub_resource type="Sky" id="Sky_fj7xf"]
+sky_material = SubResource("ProceduralSkyMaterial_g3lsq")
+
+[sub_resource type="Environment" id="Environment_5e7wl"]
+background_mode = 2
+background_color = Color(0.698039, 0.698039, 0.768627, 1)
+sky = SubResource("Sky_fj7xf")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.21
+glow_bloom = 0.12
+fog_enabled = true
+fog_light_color = Color(1, 0, 0, 1)
+fog_density = 0.0
+fog_sky_affect = 0.0
 
 [node name="lvl5" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5e7wl")
+script = ExtResource("6_rtkne")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.554213, -0.395847, 0.732225, -0.261401, 0.752407, 0.60461, -0.790264, -0.526487, 0.313519, 0.562901, 7.71882, 9.71669)
+transform = Transform3D(0.466877, -0.449679, 0.761456, -0.261401, 0.752407, 0.60461, -0.844805, -0.481324, 0.233735, 0.562901, 7.71882, 9.71669)
+light_color = Color(0.878431, 0.831373, 0.666667, 1)
+shadow_enabled = true
+shadow_opacity = 0.73
 
 [node name="Dog" parent="." instance=ExtResource("1_easya")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9384, 1.99991, 7.35163)
