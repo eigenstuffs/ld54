@@ -9,8 +9,8 @@ func _process(delta):
 		if i is Sheep:
 			num_sheep += 1
 	if num_sheep >= sheep_count and sheep_count != 0:
-		print("done")
 		LeaderboardBackend.emit_signal("stop_timer")
+		queue_free()
 	num_sheep = 0
 #
 #func _on_body_entered(body):

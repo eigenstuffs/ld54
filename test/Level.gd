@@ -12,7 +12,7 @@ var current_level = 0
 @onready var levels = [level_1, level_2, level_3, level_4, level_5, level_6]
 
 func change(level : int):
-	current_level = level
+	current_level = level-1
 	$CanvasLayer/AnimationPlayer.play("Fade")
 	await $CanvasLayer/AnimationPlayer.animation_finished
 	for i in get_children():
