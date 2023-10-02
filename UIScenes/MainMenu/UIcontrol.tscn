@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://cq6t4jivd2f0g"]
+
+[ext_resource type="Script" path="res://UIScenes/MainMenu/UIcontrol.gd" id="1_ko035"]
+[ext_resource type="Texture2D" uid="uid://0cj8tjdppofj" path="res://UI Assets/start_idle.png" id="2_4wmy7"]
+[ext_resource type="Texture2D" uid="uid://b4vc2mydsx5se" path="res://UI Assets/start_hover.png" id="3_yk8c7"]
+[ext_resource type="Texture2D" uid="uid://dsttj1nlafqa5" path="res://UI Assets/how2_idle.png" id="4_g5k8h"]
+[ext_resource type="Texture2D" uid="uid://cfqfy454ifxdc" path="res://UI Assets/settings_idle.png" id="4_ti65k"]
+[ext_resource type="Texture2D" uid="uid://cb4yvu88ymy5h" path="res://UI Assets/how2_hover.png" id="5_2ly7t"]
+[ext_resource type="Texture2D" uid="uid://bdvb4o6i40yr3" path="res://UI Assets/settings_hover.png" id="5_ukmlc"]
+[ext_resource type="Texture2D" uid="uid://cqsfs82kbegbg" path="res://UI Assets/lvls_idle.png" id="6_4olns"]
+[ext_resource type="Texture2D" uid="uid://cdk35vfkbljc3" path="res://UI Assets/lvls_hover.png" id="7_he03j"]
+[ext_resource type="Texture2D" uid="uid://cajtlvxwpr103" path="res://UI Assets/credits_idle.png" id="8_yhk0e"]
+[ext_resource type="Texture2D" uid="uid://b1xerv75jfsdw" path="res://UI Assets/credits_hover.png" id="9_byie1"]
+[ext_resource type="Texture2D" uid="uid://c427t26qu01cg" path="res://UI Assets/quit_idle.png" id="10_y0rlk"]
+[ext_resource type="Texture2D" uid="uid://76n3nrsenfwq" path="res://UI Assets/quit_hover.png" id="11_ph6co"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ko035")
+
+[node name="CenterContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -204.0
+offset_right = 188.0
+offset_bottom = 327.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+
+[node name="PlayButton" type="TextureButton" parent="CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_4wmy7")
+texture_pressed = ExtResource("3_yk8c7")
+texture_hover = ExtResource("3_yk8c7")
+texture_focused = ExtResource("3_yk8c7")
+
+[node name="How2Button" type="TextureButton" parent="CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_g5k8h")
+texture_pressed = ExtResource("5_2ly7t")
+texture_hover = ExtResource("5_2ly7t")
+texture_focused = ExtResource("5_2ly7t")
+
+[node name="LvlSelect" type="TextureButton" parent="CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_4olns")
+texture_pressed = ExtResource("7_he03j")
+texture_hover = ExtResource("7_he03j")
+texture_focused = ExtResource("7_he03j")
+
+[node name="SettingsButton" type="TextureButton" parent="CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_ti65k")
+texture_pressed = ExtResource("5_ukmlc")
+texture_hover = ExtResource("5_ukmlc")
+texture_focused = ExtResource("5_ukmlc")
+
+[node name="CreditsButton" type="TextureButton" parent="CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("8_yhk0e")
+texture_pressed = ExtResource("9_byie1")
+texture_hover = ExtResource("9_byie1")
+texture_focused = ExtResource("9_byie1")
+
+[node name="QuitButton" type="TextureButton" parent="CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_y0rlk")
+texture_pressed = ExtResource("11_ph6co")
+texture_hover = ExtResource("11_ph6co")
+texture_focused = ExtResource("11_ph6co")
+
+[connection signal="pressed" from="CenterContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/How2Button" to="." method="_on_how_2_button_pressed"]
+[connection signal="pressed" from="CenterContainer/LvlSelect" to="." method="_on_lvl_select_pressed"]
+[connection signal="pressed" from="CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CenterContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -21,11 +21,11 @@ func _physics_process(delta):
 		velocity.x = lerpf(velocity.x, 0.0, delta * ACCEL * 3.0)
 		velocity.z = lerpf(velocity.z, 0.0, delta * ACCEL * 3.0)
 	
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and LeaderboardBackend.can_move:
 		bark()
 		
 func _process(delta):
-	move_and_slide()
+	if LeaderboardBackend.can_move: move_and_slide()
 
 func bark():
 	var tween : Tween = create_tween()
