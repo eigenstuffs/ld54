@@ -83,6 +83,5 @@ texture_focused = ExtResource("11_ph6co")
 [connection signal="pressed" from="CenterContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/How2Button" to="." method="_on_how_2_button_pressed"]
 [connection signal="pressed" from="CenterContainer/LvlSelect" to="." method="_on_lvl_select_pressed"]
-[connection signal="pressed" from="CenterContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CenterContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CenterContainer/QuitButton" to="." method="_on_quit_button_pressed"]
