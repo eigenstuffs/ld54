@@ -16,10 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://cb4yvu88ymy5h" path="res://UI Assets/how2_hover.png" id="8_81q5y"]
 [ext_resource type="Texture2D" uid="uid://cqsfs82kbegbg" path="res://UI Assets/lvls_idle.png" id="9_dwjbq"]
 [ext_resource type="Texture2D" uid="uid://cdk35vfkbljc3" path="res://UI Assets/lvls_hover.png" id="10_1cttl"]
-[ext_resource type="Texture2D" uid="uid://cfqfy454ifxdc" path="res://UI Assets/settings_idle.png" id="11_wr5ae"]
-[ext_resource type="Texture2D" uid="uid://bdvb4o6i40yr3" path="res://UI Assets/settings_hover.png" id="12_vbjho"]
+[ext_resource type="Texture2D" uid="uid://jac2euvj7jsh" path="res://UI Assets/unmuted.png" id="13_hdxfg"]
 [ext_resource type="Texture2D" uid="uid://cajtlvxwpr103" path="res://UI Assets/credits_idle.png" id="13_jb18n"]
 [ext_resource type="Texture2D" uid="uid://b1xerv75jfsdw" path="res://UI Assets/credits_hover.png" id="14_7mwjb"]
+[ext_resource type="Texture2D" uid="uid://ch4ix7ttjvpvf" path="res://UI Assets/muted.png" id="14_tdmtr"]
 [ext_resource type="Texture2D" uid="uid://c427t26qu01cg" path="res://UI Assets/quit_idle.png" id="15_wl10x"]
 [ext_resource type="Texture2D" uid="uid://76n3nrsenfwq" path="res://UI Assets/quit_hover.png" id="16_uc5a3"]
 [ext_resource type="PackedScene" uid="uid://bvp21mxinukgl" path="res://UIScenes/GameOver/game_over.tscn" id="23_j5or4"]
@@ -195,6 +195,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_ae2ov")
+audio = NodePath("../../../AudioStreamPlayer")
 
 [node name="CenterContainer" type="VBoxContainer" parent="Level/CanvasLayer/MainMenu"]
 layout_mode = 1
@@ -234,10 +235,9 @@ texture_focused = ExtResource("10_1cttl")
 
 [node name="SettingsButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
 layout_mode = 2
-texture_normal = ExtResource("11_wr5ae")
-texture_pressed = ExtResource("12_vbjho")
-texture_hover = ExtResource("12_vbjho")
-texture_focused = ExtResource("12_vbjho")
+toggle_mode = true
+texture_normal = ExtResource("13_hdxfg")
+texture_pressed = ExtResource("14_tdmtr")
 
 [node name="CreditsButton" type="TextureButton" parent="Level/CanvasLayer/MainMenu/CenterContainer"]
 layout_mode = 2
@@ -290,6 +290,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
 
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Level/CanvasLayer/InGameUI/Control" method="_on_resume_pressed" flags=18]
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Retry" to="Level/CanvasLayer/InGameUI/Control" method="_on_retry_pressed" flags=18]
