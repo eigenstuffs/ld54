@@ -23,6 +23,8 @@ height = 0.979673
 size = Vector3(1.1, 1, 1.1)
 
 [node name="Dog" type="CharacterBody3D"]
+collision_layer = 5
+collision_mask = 7
 script = ExtResource("1_4wscr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

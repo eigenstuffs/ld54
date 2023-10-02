@@ -18,7 +18,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	var input_dir = Input.get_vector("left", "right", "up", "down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized().rotated(Vector3(0, 1, 0), PI/4)
+	var direction = (Vector3(input_dir.x, 0, input_dir.y)).normalized().rotated(Vector3(0, 1, 0), PI/4)
 	if direction:
 		velocity.x = lerpf(velocity.x, direction.x * SPEED, delta * ACCEL)
 		velocity.z = lerpf(velocity.z, direction.z * SPEED, delta * ACCEL)
@@ -26,14 +26,16 @@ func _physics_process(delta):
 		velocity.x = lerpf(velocity.x, 0.0, delta * ACCEL * 3.0)
 		velocity.z = lerpf(velocity.z, 0.0, delta * ACCEL * 3.0)
 	changeAnimationState(direction)
-	
+	$dog.rotation.y = lerp_angle($dog.rotation.y, atan2(velocity.x, velocity.z), delta * 10.0)
 	if Input.is_action_just_pressed("ui_accept") and LeaderboardBackend.can_move:
 		bark()
 		$AudioStreamPlayer.play()
 		
 func _process(delta):
-	if LeaderboardBackend.can_move: move_and_slide()
-
+	if LeaderboardBackend.can_move: 
+		move_and_slide()
+	# move_and_slide()
+	
 func bark():
 	var tween : Tween = create_tween()
 	tween.tween_property($Bark/CollisionShape3D, "scale", Vector3(3,3,3), 0.15)

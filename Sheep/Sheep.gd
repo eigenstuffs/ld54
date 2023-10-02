@@ -14,8 +14,8 @@ enum states {
 }
 var state := states.UNALERTED
 @export var player : NodePath
-@export var run_speed : float = 4.0
-@export var walk_speed : float = 1.0
+@export var run_speed : float = 3.0
+@export var walk_speed : float = 0.7
 @export var sheepmodel : NodePath
 var animator : AnimationPlayer
 var unalerted_walk : bool = true
@@ -75,7 +75,7 @@ func _process(delta):
 	if velocity.length() > 0:
 		var target_position = global_position + velocity
 		$sheep.rotation.y = lerp_angle($sheep.rotation.y, atan2(velocity.x, velocity.z), delta * 10.0)
-		#$FrontDetection.look_at(target_position, Vector3(0, 1, 0))
+		$FrontDetection.look_at(target_position, Vector3(0, 1, 0))
 	match state:
 		states.ALERTED:
 			vel = (player_node.global_position - global_position).normalized() * Vector3(1, 0, 1) * (run_speed) * -1
@@ -95,8 +95,9 @@ func _process(delta):
 			pass
 		_:
 			pass
-	if LeaderboardBackend.can_move: move_and_slide()
-
+	if LeaderboardBackend.can_move: 
+		move_and_slide()
+	# move_and_slide()
 func _on_timer_timeout():
 	match state:
 		states.UNALERTED:
@@ -122,14 +123,20 @@ func _on_hurtbox_area_entered(area):
 #		print("stomped")
 #		switch_state(states.STOMPED)
 
-func is_safe() -> bool:
-	for i in $Rays.get_children():
-		if !i.is_colliding():
-			return false
-	return true
-
-
 func _on_front_detection_body_entered(body):
+	match state:
+		states.UNALERTED:
+			# fix this being able to happen multiple times with one body maybe
+			if unalerted_walk:
+				$Timer.stop()
+				$Timer.start(randf_range(3.0, 5.0))
+				unalerted_walk = true
+				walk_angle = walk_angle + PI + randf_range(-PI/6, PI/6)
+
+
+func _on_ground_detection_body_exited(body):
+	#if len($GroundDetection.get_overlapping_bodies()) != 0:
+		#return
 	match state:
 		states.UNALERTED:
 			# fix this being able to happen multiple times with one body maybe
