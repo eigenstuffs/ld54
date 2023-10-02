@@ -277,6 +277,7 @@ offset_top = 8.0
 offset_bottom = 8.0
 
 [node name="lvlSelect" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("4_h8rrm")]
+visible = false
 layout_mode = 1
 
 [node name="PlayButton2" type="TextureButton" parent="Level/CanvasLayer/MainMenu/lvlSelect"]
