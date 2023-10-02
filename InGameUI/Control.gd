@@ -45,6 +45,7 @@ signal resume_button_pressed
 
 func _on_pause_pressed():
 	# Pause the game
+	LeaderboardBackend.can_move = false
 	emit_signal("pause_button_pressed")
 	isPaused = true
 	pausedTime += Time.get_ticks_msec() / 1000.0 - startTime
@@ -62,6 +63,7 @@ func _on_quit_pressed():
 
 func _on_resume_pressed():
 	# Resume the game
+	LeaderboardBackend.can_move = true
 	emit_signal("resume_button_pressed")
 	isPaused = false
 	startTime = Time.get_ticks_msec() / 1000.0 - pausedTime

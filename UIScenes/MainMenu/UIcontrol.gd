@@ -6,7 +6,9 @@ func _ready():
 	$CenterContainer/PlayButton.grab_focus()
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://Levels/lvl1/lvl1.tscn")
+	LeaderboardBackend.can_move = true
+	queue_free()
+#	get_tree().change_scene_to_file("res://Levels/lvl1/lvl1.tscn")
 
 func _on_settings_button_pressed():
 	get_tree().change_scene_to_file("res://UIScenes/SettingsMenu/settings_menu.tscn")

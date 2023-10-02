@@ -1,5 +1,7 @@
 extends Node
 
+var can_move : bool = false
+
 
 # entry.699247905 - Name
 # entry.1588699143 - Time

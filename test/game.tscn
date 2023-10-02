@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg0euhf0w417k"]
+
+[ext_resource type="PackedScene" uid="uid://bmnxvrxq82xpd" path="res://Levels/lvl1/lvl1.tscn" id="1_f3cbf"]
+[ext_resource type="PackedScene" uid="uid://cq6t4jivd2f0g" path="res://UIScenes/MainMenu/UIcontrol.tscn" id="2_r4nkh"]
+
+[node name="Game" type="Node"]
+
+[node name="lvl1" parent="." instance=ExtResource("1_f3cbf")]
+
+[node name="MainMenu" parent="." instance=ExtResource("2_r4nkh")]
