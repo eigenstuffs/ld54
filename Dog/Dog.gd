@@ -5,9 +5,14 @@ class_name Dog
 const SPEED = 5.0
 const ACCEL = 5.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var animator : AnimationPlayer
+
+enum DogAnimationState { idle, walk } 
+var state := DogAnimationState.idle
 
 func _ready():
 	RenderingServer.set_default_clear_color(Color.BEIGE)
+	animator = get_node("dog/AnimationPlayer")
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -20,6 +25,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerpf(velocity.x, 0.0, delta * ACCEL * 3.0)
 		velocity.z = lerpf(velocity.z, 0.0, delta * ACCEL * 3.0)
+	changeAnimationState(direction)
 	
 	if Input.is_action_just_pressed("ui_accept") and LeaderboardBackend.can_move:
 		bark()
@@ -35,3 +41,15 @@ func bark():
 	tween = create_tween()
 	tween.tween_property($Bark/CollisionShape3D, "scale", Vector3(.1,.1,.1), 0.5)
 	await tween.finished
+
+func changeAnimationState(direction):
+	if direction:
+		if state != DogAnimationState.walk:
+			state = DogAnimationState.walk
+			animator.play("idle to walk")
+			animator.queue("dog run")
+	else:
+		if state != DogAnimationState.idle:
+			state = DogAnimationState.idle
+			animator.play("walk to idle")
+			animator.queue("dog idle")
