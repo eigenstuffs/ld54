@@ -25,3 +25,7 @@ func _on_lvl_4_pressed():
 func _on_lvl_5_pressed():
 	get_tree().current_scene.get_node("Level").change(5)
 #	get_tree().change_scene_to_file("res://Levels/lvl5/lvl_5.tscn")
+
+func _on_lvl_6_pressed():
+	get_tree().current_scene.get_node("Level").change(6)
+#	get_tree().change_scene_to_file("res://Levels/lvl6/lvl6.tscn")

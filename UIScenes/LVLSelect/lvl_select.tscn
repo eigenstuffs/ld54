@@ -60,7 +60,6 @@ texture = ExtResource("4_g2cgd")
 
 [node name="lvl1" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 416.0
 offset_top = 304.0
@@ -70,7 +69,6 @@ text = "1"
 
 [node name="lvl2" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 528.0
 offset_top = 304.0
@@ -80,7 +78,6 @@ text = "2"
 
 [node name="lvl3" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 640.0
 offset_top = 304.0
@@ -90,7 +87,6 @@ text = "3"
 
 [node name="lvl4" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 416.0
 offset_top = 416.0
@@ -100,12 +96,20 @@ text = "4"
 
 [node name="lvl5" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = 528.0
 offset_top = 416.0
 offset_right = 628.0
 offset_bottom = 516.0
+text = "5"
+
+[node name="lvl6" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = 640.0
+offset_top = 414.0
+offset_right = 740.0
+offset_bottom = 514.0
 text = "5"
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
@@ -114,3 +118,4 @@ text = "5"
 [connection signal="pressed" from="lvl3" to="." method="_on_lvl_3_pressed"]
 [connection signal="pressed" from="lvl4" to="." method="_on_lvl_4_pressed"]
 [connection signal="pressed" from="lvl5" to="." method="_on_lvl_5_pressed"]
+[connection signal="pressed" from="lvl6" to="." method="_on_lvl_6_pressed"]
