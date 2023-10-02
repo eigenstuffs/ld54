@@ -23,9 +23,9 @@ func _on_exit_pressed():
 	get_tree().change_scene_to_file("res://test/game.tscn")
  
 func _on_nextlvl_pressed():
-	get_tree().current_scene.get_node("Level").change(get_tree().current_scene.get_node("Level").current_level+2)
+	get_tree().current_scene.get_node("Level").change(min(6, get_tree().current_scene.get_node("Level").current_level+1))
 	hide()
 
 func _on_retry_pressed():
-	get_tree().current_scene.get_node("Level").change(get_tree().current_scene.get_node("Level").current_level+1)
+	get_tree().current_scene.get_node("Level").change(get_tree().current_scene.get_node("Level").current_level)
 	hide()
