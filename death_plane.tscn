@@ -11,3 +11,5 @@ script = ExtResource("1_hdg0s")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -30, 2.08165e-12)
 shape = SubResource("BoxShape3D_4147y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
