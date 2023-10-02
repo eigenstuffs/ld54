@@ -319,7 +319,6 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_hqlv1")
-volume_db = -10.0
 autoplay = true
 
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Level/CanvasLayer/InGameUI/Control" method="_on_resume_pressed"]
