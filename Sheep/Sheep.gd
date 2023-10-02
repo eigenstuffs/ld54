@@ -93,7 +93,7 @@ func _process(delta):
 			pass
 		_:
 			pass
-	move_and_slide()
+	if LeaderboardBackend.can_move: move_and_slide()
 
 func _on_timer_timeout():
 	match state:

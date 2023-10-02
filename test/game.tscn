@@ -1,10 +1,114 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg0euhf0w417k"]
+[gd_scene load_steps=13 format=3 uid="uid://dg0euhf0w417k"]
 
+[ext_resource type="Script" path="res://test/Level.gd" id="1_1m3dt"]
 [ext_resource type="PackedScene" uid="uid://bmnxvrxq82xpd" path="res://Levels/lvl1/lvl1.tscn" id="1_f3cbf"]
 [ext_resource type="PackedScene" uid="uid://cq6t4jivd2f0g" path="res://UIScenes/MainMenu/UIcontrol.tscn" id="2_r4nkh"]
+[ext_resource type="PackedScene" uid="uid://bcgso4vo7nkjw" path="res://UIScenes/Credits/credits_scene.tscn" id="3_dgbcl"]
+[ext_resource type="PackedScene" uid="uid://diugumuikudpq" path="res://UIScenes/LVLSelect/lvl_select.tscn" id="4_h8rrm"]
+[ext_resource type="PackedScene" uid="uid://4co4oba1mb8v" path="res://UIScenes/SettingsMenu/settings_menu.tscn" id="5_h1u70"]
+[ext_resource type="PackedScene" uid="uid://u3ypm88eckwx" path="res://UIScenes/HowTo/HowTo.tscn" id="6_ygoeb"]
+[ext_resource type="PackedScene" uid="uid://bv7dltqbb6248" path="res://InGameUI/in_game_ui.tscn" id="8_wtuyi"]
+
+[sub_resource type="Animation" id="Animation_3fqpw"]
+resource_name = "Fade"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1232, -608), Vector2(192, -560)]
+}
+
+[sub_resource type="Animation" id="Animation_2yum5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1232, -608)]
+}
+
+[sub_resource type="Animation" id="Animation_u05n5"]
+resource_name = "Fade_2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(192, -560), Vector2(1632, -424)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gerod"]
+_data = {
+"Fade": SubResource("Animation_3fqpw"),
+"Fade_2": SubResource("Animation_u05n5"),
+"RESET": SubResource("Animation_2yum5")
+}
 
 [node name="Game" type="Node"]
 
-[node name="lvl1" parent="." instance=ExtResource("1_f3cbf")]
+[node name="Level" type="Node" parent="."]
+script = ExtResource("1_1m3dt")
 
-[node name="MainMenu" parent="." instance=ExtResource("2_r4nkh")]
+[node name="lvl1" parent="Level" instance=ExtResource("1_f3cbf")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Level"]
+
+[node name="ColorRect" type="ColorRect" parent="Level/CanvasLayer"]
+anchors_preset = -1
+anchor_left = -0.760417
+anchor_top = -0.598765
+anchor_right = 0.369792
+anchor_bottom = 1.3071
+offset_left = -356.0
+offset_top = -220.0
+offset_right = -316.0
+offset_bottom = -180.0
+rotation = 0.349066
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="InGameUI" parent="Level/CanvasLayer" instance=ExtResource("8_wtuyi")]
+visible = false
+
+[node name="MainMenu" parent="Level/CanvasLayer" instance=ExtResource("2_r4nkh")]
+
+[node name="CreditsScene" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("3_dgbcl")]
+visible = false
+layout_mode = 1
+
+[node name="lvlSelect" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("4_h8rrm")]
+visible = false
+layout_mode = 1
+
+[node name="SettingsMenu" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("5_h1u70")]
+visible = false
+layout_mode = 1
+
+[node name="HowTo" parent="Level/CanvasLayer/MainMenu" instance=ExtResource("6_ygoeb")]
+visible = false
+layout_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_gerod")
+}
