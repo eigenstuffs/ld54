@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dq86mu3c1j3oq"
+path="res://.godot/imported/BR LD54 SHEEP Loop V02.mp3-a6a8053765c3e9cafd1c60909be4c110.mp3str"
+
+[deps]
+
+source_file="res://Sound/BR LD54 SHEEP Loop V02.mp3"
+dest_files=["res://.godot/imported/BR LD54 SHEEP Loop V02.mp3-a6a8053765c3e9cafd1c60909be4c110.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

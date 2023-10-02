@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dg0euhf0w417k"]
+[gd_scene load_steps=30 format=3 uid="uid://dg0euhf0w417k"]
 
 [ext_resource type="Script" path="res://test/Level.gd" id="1_1m3dt"]
 [ext_resource type="PackedScene" uid="uid://bmnxvrxq82xpd" path="res://Levels/lvl1/lvl1.tscn" id="1_f3cbf"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://c427t26qu01cg" path="res://UI Assets/quit_idle.png" id="15_wl10x"]
 [ext_resource type="Texture2D" uid="uid://76n3nrsenfwq" path="res://UI Assets/quit_hover.png" id="16_uc5a3"]
 [ext_resource type="PackedScene" uid="uid://bvp21mxinukgl" path="res://UIScenes/GameOver/game_over.tscn" id="23_j5or4"]
+[ext_resource type="AudioStream" uid="uid://dq86mu3c1j3oq" path="res://Sound/BR LD54 SHEEP Loop V02.mp3" id="26_hqlv1"]
 
 [sub_resource type="Animation" id="Animation_3fqpw"]
 resource_name = "Fade"
@@ -312,7 +313,8 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -20.0
+stream = ExtResource("26_hqlv1")
+autoplay = true
 
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Resume" to="Level/CanvasLayer/InGameUI/Control" method="_on_resume_pressed"]
 [connection signal="pressed" from="Level/CanvasLayer/InGameUI/Control/PauseMenu/CenterContainer/VBoxContainer/Quit" to="Level/CanvasLayer/InGameUI/Control" method="_on_quit_pressed"]
