@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8qja7bh1ajhw"]
+
+[ext_resource type="Script" path="res://UIScenes/Title Screen/title_screen.gd" id="1_mh38l"]
+[ext_resource type="Texture2D" uid="uid://dylq1b62gyv5y" path="res://UI Assets/Title.png" id="2_yl4vn"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mh38l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(-2, 1)
+texture = ExtResource("2_yl4vn")
