@@ -1,5 +1,7 @@
 extends Node
 
+@onready var dat = preload("res://Data.tres")
+
 var can_move : bool = false
 
 signal stop_timer
@@ -32,6 +34,7 @@ func http_get(_result, _response_code, _headers, _body, http):
 		var data = JSON.parse_string(_body.get_string_from_utf8())
 		print("Decoding complete")
 		print(data)
+		dat.list = data
 	
 
 
