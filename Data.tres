@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Data" load_steps=2 format=3 uid="uid://bx5sy86hq6pd1"]
+
+[ext_resource type="Script" path="res://data.gd" id="1_ug2ls"]
+
+[resource]
+script = ExtResource("1_ug2ls")
+list = []

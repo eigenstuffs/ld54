@@ -10,7 +10,6 @@ extends Control
 @onready var colorRect: ColorRect = $PauseMenu
 @onready var centerContainer: CenterContainer = $PauseMenu/CenterContainer
 @onready var pauseButton: Button = $Pause
-@onready var retryButton: Button = $PauseMenu/CenterContainer/VBoxContainer/Retry
 @onready var quitButton: Button = $PauseMenu/CenterContainer/VBoxContainer/Quit
 @onready var resumeButton: Button = $PauseMenu/CenterContainer/VBoxContainer/Resume
 
@@ -49,7 +48,6 @@ func update_timer_label(delta):
 
 # Custom signals for button presses
 signal pause_button_pressed
-signal retry_button_pressed
 signal quit_button_pressed
 signal resume_button_pressed
 
@@ -62,11 +60,6 @@ func _on_pause_pressed():
 	pausedTime += Time.get_ticks_msec() / 1000.0 - startTime
 	colorRect.visible = true
 	centerContainer.show()
-
-func _on_retry_pressed():
-	# Reload the current scene
-	emit_signal("retry_button_pressed")
-	get_tree().reload_current_scene()
 
 func _on_quit_pressed():
 	emit_signal("quit_button_pressed")
